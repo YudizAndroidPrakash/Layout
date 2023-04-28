@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="btnBgColor">#808080</color>
+    <color name="btnTextColor">#40E0D0</color>
+
+    <declare-styleable name="ButtonCustomDemo">
+        <attr name="btnTextData" format="string"/>
+        <attr name="btnColor" format="color"/>
+        <attr name="btnTextColor" format="color"/>
+        <attr name="btnEnabled" format="boolean"/>
+<!--        <attr name="btnSize" format="enum">-->
+<!--            <enum name="DEFAULT"  value="0"/>-->
+<!--            <enum name="MINI" value="1"/>-->
+<!--            <enum name="LARGE" value="2"/>-->
+<!--        </attr>-->
+    </declare-styleable>
+</resources>
