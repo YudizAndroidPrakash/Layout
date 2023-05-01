@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewDemo"
+    >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/teal_200"
+        android:drawableStart="@drawable/baseline_add_a_photo_24"
+        android:padding="10dp"
+        android:text="Hello World!"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtView"
+        android:layout_width="179dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        android:drawableEnd="@drawable/baseline_emoji_emotions_24"
+        android:hint="Enter Name"
+        android:padding="10dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTitle" />
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/peakpx"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <CheckBox
+        android:id="@+id/cbfirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="First"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imgView"
+        app:layout_constraintTop_toBottomOf="@id/edtView"
+        app:layout_constraintTop_toTopOf="@id/imgView" />
+
+    <CheckBox
+        android:id="@+id/cbSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imgView"
+        app:layout_constraintStart_toStartOf="@id/cbfirst"
+        app:layout_constraintTop_toBottomOf="@id/cbfirst" />
+
+    <CheckBox
+        android:id="@+id/cbThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Third"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imgView"
+        app:layout_constraintStart_toStartOf="@id/cbSecond"
+        app:layout_constraintTop_toBottomOf="@id/cbSecond" />
+
+    <CheckBox
+        android:id="@+id/cbFourth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Four"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/imgView"
+        app:layout_constraintStart_toStartOf="@id/cbThird"
+        app:layout_constraintTop_toBottomOf="@id/cbThird" />
+
+    <RadioGroup
+        android:id="@+id/rgGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@id/cbSecond"
+        app:layout_constraintTop_toBottomOf="@id/edtView">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="male"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="female"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:typeface="serif" />
+    </RadioGroup>
+
+
+    <HorizontalScrollView
+        android:id="@+id/imageHs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgView">
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/peakpx" />
+
+            <ImageView
+                android:id="@+id/image2"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/peakpx" />
+
+            <ImageView
+                android:id="@+id/image3"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/peakpx" />
+
+            <ImageView
+                android:id="@+id/image4"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/peakpx" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/baseline_free_breakfast_24"
+        app:layout_constraintStart_toStartOf="@+id/imageHs"
+        app:layout_constraintTop_toBottomOf="@id/imageHs" />
+
+    <Switch
+        android:id="@+id/switchDemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintStart_toEndOf="@id/imageButton"
+        app:layout_constraintTop_toBottomOf="@id/imageHs" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
