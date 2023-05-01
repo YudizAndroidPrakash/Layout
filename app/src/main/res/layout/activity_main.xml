@@ -11,8 +11,8 @@
         android:id="@+id/btnRegistration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:text="Registration"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,14 +27,28 @@
         app:layout_constraintStart_toEndOf="@+id/btnRegistration"
         app:layout_constraintTop_toTopOf="@+id/btnRegistration" />
 
+    <Button
+        android:id="@+id/btnLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Layout"
+        app:layout_constraintStart_toStartOf="@id/btnRegistration"
+        app:layout_constraintTop_toBottomOf="@id/btnRegistration" />
 
     <Button
         android:id="@+id/btnCustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/btnRegistration"
-        app:layout_constraintTop_toBottomOf="@+id/btnRegistration"
-        android:text="Custom Btn"
-        />
+        android:text="M view"
+        app:layout_constraintStart_toStartOf="@id/btnProfile"
+        app:layout_constraintTop_toBottomOf="@id/btnProfile" />
+
+    <Button
+        android:id="@+id/bntcustomDemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Custom"
+        app:layout_constraintStart_toStartOf="@id/btnLayout"
+        app:layout_constraintTop_toBottomOf="@+id/btnLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

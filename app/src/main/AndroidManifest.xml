@@ -12,7 +12,7 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
-            android:name=".Custom_Button_Demo"
+            android:name=".CustomButtonWithprogressbar"
             android:exported="false" />
         <activity
             android:name=".Profile"
@@ -20,6 +20,9 @@
         <activity
             android:name=".Registration"
             android:exported="false" />
+
+        <activity android:name=".DrawableDemo"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
