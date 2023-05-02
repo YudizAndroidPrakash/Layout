@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">DemoApp</string>
     <string name="let_s_walk">Let\'s Walk</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Home</string>
+    <string name="friends_blank_fragment">Friends</string>
+    <string name="family_blank_fragment">Family</string>
+    <string name="homeTab">Home</string>
+    <string name="familyTab">Family</string>
+    <string name="friendsTab">Friends</string>
 </resources>

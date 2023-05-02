@@ -44,7 +44,10 @@
         android:src="@drawable/baseline_add_a_photo_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        app:rippleColor="@color/white"
+        android:backgroundTint="@color/white"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbsecond"
@@ -55,7 +58,9 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/fbfirst"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:backgroundTint="@color/white"
+        />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fbthird"
@@ -66,7 +71,8 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/fbsecond"
         app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible" />
+        tools:visibility="visible"
+        android:backgroundTint="@color/white"/>
 
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -78,7 +84,8 @@
         app:iconSize="35dp"
         android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/white"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fbaTrain"
@@ -89,7 +96,8 @@
         app:icon="@drawable/baseline_directions_transit_24"
         app:iconSize="35dp"
         app:layout_constraintBottom_toTopOf="@id/fbaWalk"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/white"/>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fbaMotor"
@@ -100,7 +108,8 @@
         app:icon="@drawable/baseline_electric_car_24"
         app:iconSize="35dp"
         app:layout_constraintBottom_toTopOf="@id/fbaTrain"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="@color/white"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

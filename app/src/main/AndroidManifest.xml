@@ -12,6 +12,12 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".TabLayoutDemo"
+            android:exported="false" />
+        <activity
+            android:name=".VectorShapeSelector"
+            android:exported="false" />
+        <activity
             android:name=".CustomButtonWithprogressbar"
             android:exported="false" />
         <activity
@@ -20,9 +26,9 @@
         <activity
             android:name=".Registration"
             android:exported="false" />
-
-        <activity android:name=".DrawableDemo"
-            android:exported="false"/>
+        <activity
+            android:name=".DrawableDemo"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -51,4 +51,21 @@
         app:layout_constraintStart_toStartOf="@id/btnLayout"
         app:layout_constraintTop_toBottomOf="@+id/btnLayout" />
 
+    <Button
+        android:id="@+id/btnVectorShapeSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vector"
+        app:layout_constraintStart_toStartOf="@id/btnProfile"
+        app:layout_constraintTop_toBottomOf="@id/btnCustom"
+        />
+    <Button
+        android:id="@+id/tlDemoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tab layout"
+        app:layout_constraintStart_toStartOf="@id/bntcustomDemo"
+        app:layout_constraintTop_toBottomOf="@id/bntcustomDemo"
+
+/>
 </androidx.constraintlayout.widget.ConstraintLayout>

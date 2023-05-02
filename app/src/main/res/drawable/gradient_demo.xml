@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <gradient android:centerColor="@color/black" android:endColor="@color/red"
+        android:angle="@integer/material_motion_duration_medium_2"
+        android:type="sweep"
+        android:startColor="@color/btn_green"/>
+    <stroke android:width="2dp" android:dashWidth="5dp" android:dashGap="2dp"
+        android:color="@color/material_on_background_disabled"/>
+    <size android:width="10dp" android:height="10dp"/>
+</shape>

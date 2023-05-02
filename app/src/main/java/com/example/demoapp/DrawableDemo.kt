@@ -1,5 +1,6 @@
 package com.example.demoapp
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -95,11 +96,12 @@ class DrawableDemo : AppCompatActivity() {
             }
         }
     }
-    private fun textHideandShow(displayText : String,status : Int){
+
+    private fun textHideandShow(displayText : String, status : Int){
         val snack = Snackbar.make(layoutDemo,"Button Clicked",Snackbar.LENGTH_LONG)
             .setAction(displayText){
                 tvClick.visibility = status
-            }
+            }.setBackgroundTint(R.color.bg_doremon)
         snack.show()
     }
 
