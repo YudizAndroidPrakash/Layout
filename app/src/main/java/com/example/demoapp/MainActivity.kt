@@ -1,12 +1,14 @@
 package com.example.demoapp
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.CustomButtonWithprogressbar
 import com.example.demoapp.DrawableDemo
+import com.google.android.material.color.DynamicColors
 import com.google.android.material.tabs.TabLayout.Tab
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DynamicColors.applyToActivitiesIfAvailable(applicationContext as Application)
         setContentView(R.layout.activity_main)
 
         btnRegistartion = findViewById(R.id.btnRegistration)
