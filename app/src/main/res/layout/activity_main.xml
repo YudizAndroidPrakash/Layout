@@ -57,15 +57,31 @@
         android:layout_height="wrap_content"
         android:text="vector"
         app:layout_constraintStart_toStartOf="@id/btnProfile"
-        app:layout_constraintTop_toBottomOf="@id/btnCustom"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btnCustom" />
+
     <Button
         android:id="@+id/tlDemoButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tab layout"
         app:layout_constraintStart_toStartOf="@id/bntcustomDemo"
-        app:layout_constraintTop_toBottomOf="@id/bntcustomDemo"
+        app:layout_constraintTop_toBottomOf="@id/bntcustomDemo" />
 
-/>
+    <Button
+        android:id="@+id/rvDemo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recycle View"
+        app:layout_constraintStart_toStartOf="@id/btnVectorShapeSelector"
+        app:layout_constraintTop_toBottomOf="@id/btnVectorShapeSelector" />
+
+
+    <Button
+        android:id="@+id/btnRunTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tlDemoButton"
+        app:layout_constraintStart_toStartOf="@id/tlDemoButton"
+        android:text="Run Time "
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

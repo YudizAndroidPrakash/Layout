@@ -12,6 +12,15 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".RtPermissionReturnResult2"
+            android:exported="false" />
+        <activity
+            android:name=".RtPermissionReturnResult"
+            android:exported="false" />
+        <activity
+            android:name=".RecycleViewDemo"
+            android:exported="false" />
+        <activity
             android:name=".TabLayoutDemo"
             android:exported="false" />
         <activity

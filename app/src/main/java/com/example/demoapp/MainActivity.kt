@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnLayout : Button
     lateinit var btnVectorShapeDemo : Button
    lateinit var tabLayoutDemo  : Button
+   lateinit var rvDemo : Button
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,9 @@ class MainActivity : AppCompatActivity() {
         btnLayout = findViewById(R.id.btnLayout)
         btnVectorShapeDemo = findViewById(R.id.btnVectorShapeSelector)
         tabLayoutDemo = findViewById(R.id.tlDemoButton)
+        rvDemo = findViewById(R.id.rvDemo)
+
+
         btnRegistartion.setOnClickListener {
             var i = Intent(this,Registration::class.java)
             startActivity(i)
@@ -63,6 +67,12 @@ class MainActivity : AppCompatActivity() {
 
         tabLayoutDemo.setOnClickListener {
             var intent = Intent(this,TabLayoutDemo::class.java)
+            startActivity(intent)
+        }
+
+
+        rvDemo.setOnClickListener {
+            var intent = Intent(this,RecycleViewDemo::class.java)
             startActivity(intent)
         }
 

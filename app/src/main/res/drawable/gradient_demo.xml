@@ -4,7 +4,7 @@
         android:angle="@integer/material_motion_duration_medium_2"
         android:type="sweep"
         android:startColor="@color/btn_green"/>
-    <stroke android:width="2dp" android:dashWidth="5dp" android:dashGap="2dp"
+    <stroke android:width="2dp" android:dashWidth="10dp" android:dashGap="2dp"
         android:color="@color/material_on_background_disabled"/>
-    <size android:width="10dp" android:height="10dp"/>
+    <size android:width="100dp" android:height="100dp"/>
 </shape>

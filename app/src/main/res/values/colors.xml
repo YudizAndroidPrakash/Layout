@@ -13,4 +13,5 @@
     <color name="bg_doremon">#33AAFF</color>
     <color name="btn_green">#99ff66</color>
     <color name="gradient_color">#F36D6D</color>
+    <color name="list_data_bg_yello">#FFFF00</color>
 </resources>
