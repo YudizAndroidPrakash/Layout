@@ -6,20 +6,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.demoapp.CustomButtonWithprogressbar
-import com.example.demoapp.DrawableDemo
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.tabs.TabLayout.Tab
 
 class MainActivity : AppCompatActivity() {
-    lateinit var  btnRegistartion : Button
-    lateinit var  btnProfile : Button
-    lateinit var btnMView :  Button
-    lateinit var  btnCustomView : Button
-    lateinit var btnLayout : Button
-    lateinit var btnVectorShapeDemo : Button
-   lateinit var tabLayoutDemo  : Button
-   lateinit var rvDemo : Button
+    lateinit var btnRegistartion: Button
+    lateinit var btnProfile: Button
+    lateinit var btnMView: Button
+    lateinit var btnCustomView: Button
+    lateinit var btnLayout: Button
+    lateinit var btnVectorShapeDemo: Button
+    lateinit var tabLayoutDemo: Button
+    lateinit var rvDemo: Button
+    lateinit var btnRuntime : Button
+    lateinit var btnFragment : Button
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,45 +34,58 @@ class MainActivity : AppCompatActivity() {
         btnVectorShapeDemo = findViewById(R.id.btnVectorShapeSelector)
         tabLayoutDemo = findViewById(R.id.tlDemoButton)
         rvDemo = findViewById(R.id.rvDemo)
+        btnRuntime = findViewById(R.id.btnRunTime)
+        btnFragment = findViewById(R.id.btnFragment)
 
 
         btnRegistartion.setOnClickListener {
-            var i = Intent(this,Registration::class.java)
+            val i = Intent(this, Registration::class.java)
             startActivity(i)
         }
         btnProfile.setOnClickListener {
-            var intent = Intent(this,Profile::class.java)
+            val intent = Intent(this, Profile::class.java)
             startActivity(intent)
         }
         btnLayout.setOnClickListener {
-            var intent = Intent(this,ViewDemo::class.java)
+            val intent = Intent(this,ViewDemo::class.java)
             startActivity(intent)
         }
 
         btnMView.setOnClickListener {
-            var intent = Intent(this,DrawableDemo::class.java)
+            val intent = Intent(this, DrawableDemo::class.java)
             startActivity(intent)
         }
 
         btnCustomView.setOnClickListener {
-            var intent = Intent(this,CustomButtonWithprogressbar::class.java)
+            val intent = Intent(this, CustomButtonWithprogressbar::class.java)
             startActivity(intent)
 
         }
 
         btnVectorShapeDemo.setOnClickListener {
-            var intent  = Intent(this,VectorShapeSelector::class.java)
+            val intent = Intent(this, VectorShapeSelector::class.java)
             startActivity(intent)
         }
 
         tabLayoutDemo.setOnClickListener {
-            var intent = Intent(this,TabLayoutDemo::class.java)
+            val intent = Intent(this, TabLayoutDemo::class.java)
             startActivity(intent)
         }
 
 
         rvDemo.setOnClickListener {
-            var intent = Intent(this,RecycleViewDemo::class.java)
+            val intent = Intent(this, RecycleViewDemo::class.java)
+            startActivity(intent)
+        }
+
+
+        btnRuntime.setOnClickListener {
+            val intent = Intent(this,RtPermissionReturnResult::class.java)
+            startActivity(intent)
+        }
+
+        btnFragment.setOnClickListener {
+            val intent = Intent(this,FragmentTaskActivity::class.java)
             startActivity(intent)
         }
 

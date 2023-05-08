@@ -84,4 +84,13 @@
         app:layout_constraintStart_toStartOf="@id/tlDemoButton"
         android:text="Run Time "
         />
+
+    <Button
+        android:id="@+id/btnFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fragment"
+        app:layout_constraintStart_toStartOf="@id/rvDemo"
+        app:layout_constraintTop_toBottomOf="@id/rvDemo"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

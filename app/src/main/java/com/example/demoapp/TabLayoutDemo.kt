@@ -3,12 +3,11 @@ package com.example.demoapp
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 
 class TabLayoutDemo : AppCompatActivity() {
-    var tabLayoutDemo : TabLayout? = null
+    private var tabLayoutDemo : TabLayout? = null
     var vpLayoutDemo : ViewPager? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +21,9 @@ class TabLayoutDemo : AppCompatActivity() {
 //        tabLayoutDemo?.addTab(tabLayoutDemo!!.newTab().setText(R.string.friendsTab).setIcon(R.drawable.ic_mobile_friendly_24))
 //        tabLayoutDemo?.addTab(tabLayoutDemo!!.newTab().setText(R.string.familyTab).setIcon(R.drawable.ic_mobile_screen_share_24))
 
-        tabLayoutDemo?.addTab(tabLayoutDemo!!.newTab().setText(R.string.homeTab))
-        tabLayoutDemo?.addTab(tabLayoutDemo!!.newTab().setText(R.string.friendsTab))
-        tabLayoutDemo?.addTab(tabLayoutDemo!!.newTab().setText(R.string.familyTab))
+        tabLayoutDemo!!.addTab(tabLayoutDemo!!.newTab().setText(R.string.homeTab))
+        tabLayoutDemo!!.addTab(tabLayoutDemo!!.newTab().setText(R.string.friendsTab))
+        tabLayoutDemo!!.addTab(tabLayoutDemo!!.newTab().setText(R.string.familyTab))
 
 
 
@@ -33,23 +32,24 @@ class TabLayoutDemo : AppCompatActivity() {
 
         vpLayoutDemo!!.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayoutDemo))
 
+        tabLayoutDemo?.tabCount
         tabLayoutDemo!!.addOnTabSelectedListener(object  : TabLayout.OnTabSelectedListener {
 
             @SuppressLint("SuspiciousIndentation")
             override fun onTabSelected(tab: TabLayout.Tab?) {
 
                 vpLayoutDemo!!.currentItem = tab!!.position
-                    displayIcon(tabLayoutDemo!!,tab,iconArray)
+                    displayIcon(tab,iconArray)
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                tab?.setIcon(null)
+                tab?.icon = null
               }
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })
     }
 
-    private fun displayIcon(tabLayoutDemo: TabLayout, tab: TabLayout.Tab, iconArray: IntArray) {
+    private fun displayIcon( tab: TabLayout.Tab, iconArray: IntArray) {
                 tab.setIcon(iconArray[tab.position])
     }
 

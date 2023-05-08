@@ -19,7 +19,9 @@ data class DataHoldPerson(
 
 }
 
-class TaskAdapter(private val myDataList: ArrayList<DataHoldPerson>) :
+class TaskAdapter(
+    private val myDataList: ArrayList<DataHoldPerson>
+) :
     RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
 
@@ -36,17 +38,28 @@ class TaskAdapter(private val myDataList: ArrayList<DataHoldPerson>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+
         holder.icDelete!!.setOnClickListener {
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, myDataList.size)
             myDataList.removeAt(position)
         }
-        holder.selected!!.setOnCheckedChangeListener { _, isSelected ->
-            myDataList[position].checked = isSelected
-//            notifyItemChanged(position)
+
+        holder.selected!!.setOnClickListener {
+            myDataList[position].checked = !myDataList[position].checked
+            notifyItemChanged(position)
         }
-        holder.bind(position, myDataList)
-    }
+
+//        holder.selected!!.setOnCheckedChangeListener { _, isSelected ->
+//
+//            myDataList[position].checked = isSelected
+//            if(myDataList[position].checked == isSelected){
+//                notifyItemChanged(position)
+//            }
+        holder.bind(position, myDataList,holder)
+        }
+
+
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         private var tvName: TextView? = null
@@ -63,11 +76,13 @@ class TaskAdapter(private val myDataList: ArrayList<DataHoldPerson>) :
             selected = ItemView.findViewById(R.id.cbDataSelected)
         }
 
-        fun bind(position: Int, myDataList: ArrayList<DataHoldPerson>) {
+        fun bind(position: Int, myDataList: ArrayList<DataHoldPerson>, holder: ViewHolder) {
             val i = myDataList[position]
             tvName!!.text = i.name
             tvEmail!!.text = i.email
             tvMobile!!.text = i.mobileNumber.toString()
+
+            holder.selected!!.isChecked = i.checked
         }
     }
 }

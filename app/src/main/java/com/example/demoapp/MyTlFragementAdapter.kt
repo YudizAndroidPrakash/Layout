@@ -13,19 +13,19 @@ class MyTlFragementAdapter(var context: Context, fm: FragmentManager, var tabCou
     override fun getCount() = tabCounts
 
     override fun getItem(position: Int): Fragment {
-        when (position) {
+        return when (position) {
             0 -> {
-                return HomeFragment()
+                HomeFragment()
             }
             1 -> {
-                return FriendFragment()
+                FriendFragment()
 
             }
             2 -> {
-                return FamilyFragment()
+                FamilyFragment()
             }
             else -> {
-               return  HomeFragment()
+                HomeFragment()
             }
         }
     }

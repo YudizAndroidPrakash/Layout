@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.RecyclerView
 
 class RecycleViewDemo : AppCompatActivity() {
@@ -23,7 +24,7 @@ class RecycleViewDemo : AppCompatActivity() {
         addData(taskData)
         bindOnAdapater(adapter)
         btnDeleteAll = findViewById(R.id.btnDeleteAll)
-        var sizeOfList = taskData.size
+//        var sizeOfList = taskData.size
 
         btnDeleteAll.setOnClickListener(object : android.view.View.OnClickListener {
             override fun onClick(p0: View?) {
@@ -38,22 +39,33 @@ class RecycleViewDemo : AppCompatActivity() {
         })
 
     }
-
-
     private fun bindOnAdapater(adapter: TaskAdapter) {
         rv_Demo = findViewById(R.id.rv_task_data)
         rv_Demo.adapter = adapter
     }
 
     private fun addData(taskData: ArrayList<DataHoldPerson>) {
-
-        taskData.add(DataHoldPerson("prakash1", "parmar@gmail.com", 1234567890))
-        taskData.add(DataHoldPerson("prakash2", "parmar@gmail.com", 1234567890))
-        taskData.add(DataHoldPerson("prakash3", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Divesh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Harsh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Aayush", "parmar@gmail.com", 1234567890))
         taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
-        taskData.add(DataHoldPerson("prakash5", "parmar@gmail.com", 1234567890))
-        taskData.add(DataHoldPerson("prakash6", "parmar@gmail.com", 1234567890))
-        taskData.add(DataHoldPerson("prakash7", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Divesh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Harsh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Aayush", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Divesh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Harsh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Aayush", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Divesh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Harsh", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("Aayush", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+        taskData.add(DataHoldPerson("prakash4", "parmar@gmail.com", 1234567890))
+
     }
 }
 

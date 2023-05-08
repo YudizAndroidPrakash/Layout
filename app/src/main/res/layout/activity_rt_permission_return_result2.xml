@@ -4,39 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.FamilyFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".RtPermissionReturnResult2">
 
     <TextView
-        android:id="@+id/tvFamilytitle"
-        android:layout_width="match_parent"
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="@string/family_blank_fragment"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:typeface="serif"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-    <ImageView
-        android:id="@+id/ivFriends"
+    <Button
+        android:id="@+id/btnImagePick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/family_images"
-        app:layout_constraintTop_toBottomOf="@id/tvFamilytitle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        android:text="Click to add photo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-     />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
