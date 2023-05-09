@@ -93,4 +93,12 @@
         app:layout_constraintStart_toStartOf="@id/rvDemo"
         app:layout_constraintTop_toBottomOf="@id/rvDemo"
         />
+    <Button
+        android:id="@+id/btnAlertDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alert Dialog"
+        app:layout_constraintStart_toStartOf="@id/btnRunTime"
+        app:layout_constraintTop_toBottomOf="@id/btnRunTime"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

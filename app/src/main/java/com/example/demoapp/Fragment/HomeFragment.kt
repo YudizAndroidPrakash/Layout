@@ -24,7 +24,6 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,12 +37,11 @@ class HomeFragment : Fragment() {
         btnSendData.setOnClickListener {
             transferDataTo.sendData(etSendData.text.toString())
         }
-
         btnNextHome.setOnClickListener {
-                activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment2()).disallowAddToBackStack().commit()
+                activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment2()).commit()
+
+
         }
         return return_inflater
     }
-
 }
-

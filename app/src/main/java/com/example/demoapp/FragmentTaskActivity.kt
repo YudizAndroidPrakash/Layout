@@ -43,4 +43,9 @@ class FragmentTaskActivity : AppCompatActivity(),TransferData {
         tvData = findViewById(R.id.tvDataFromFrag)
         tvData.text = data
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        if(HomeFragment2.backPressed)
+//    }
 }

@@ -7,6 +7,7 @@ import android.view.View
 
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.OnBackPressedCallback
 import com.example.demoapp.R
 
 
@@ -22,8 +23,7 @@ class HomeFragment2 : Fragment() {
         val return_inflater = inflater.inflate(R.layout.fragment_home2, container, false)
         btnBack= return_inflater.findViewById(R.id.btnSendData)
         btnBack.setOnClickListener {
-            activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment())
-                .commit()
+            activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment()).commit()
         }
         return  return_inflater
     }

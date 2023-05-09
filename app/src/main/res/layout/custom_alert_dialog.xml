@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_dialog_bg"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dialog Title"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/etFromDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:inputType="date"
+        android:focusable="false"
+        android:hint="From Date"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        />
+
+    <EditText
+        android:id="@+id/etToDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:inputType="date"
+        android:hint="To Date"
+        android:focusable="false"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/etFromDate"
+        app:layout_constraintTop_toBottomOf="@id/etFromDate"
+        />
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Time"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:focusable="false"
+        app:layout_constraintStart_toStartOf="@+id/etToDate"
+        app:layout_constraintTop_toBottomOf="@id/etToDate"
+        />
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_button_bg"
+        app:layout_constraintStart_toStartOf="@id/etTime"
+        app:layout_constraintTop_toBottomOf="@id/etTime"
+        />
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_button_bg"
+        app:layout_constraintEnd_toEndOf="@id/etTime"
+        app:layout_constraintTop_toBottomOf="@id/etTime"
+         />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
