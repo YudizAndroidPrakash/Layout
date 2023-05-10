@@ -23,7 +23,7 @@ class HomeFragment2 : Fragment() {
         val return_inflater = inflater.inflate(R.layout.fragment_home2, container, false)
         btnBack= return_inflater.findViewById(R.id.btnSendData)
         btnBack.setOnClickListener {
-            activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment()).commit()
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
         return  return_inflater
     }

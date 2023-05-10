@@ -21,9 +21,6 @@ class HomeFragment : Fragment() {
     private  lateinit var  btnSendData : Button
     private  lateinit var  etSendData : EditText
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +35,7 @@ class HomeFragment : Fragment() {
             transferDataTo.sendData(etSendData.text.toString())
         }
         btnNextHome.setOnClickListener {
-                activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment2()).commit()
+                activity?.supportFragmentManager!!.beginTransaction().replace(R.id.frame_layout,HomeFragment2()).addToBackStack("homeFragment").commit()
 
 
         }

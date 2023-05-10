@@ -16,7 +16,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class FragmentTaskActivity : AppCompatActivity(),TransferData {
     private lateinit var btnNavigation: BottomNavigationView
-    private  lateinit var tvData : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fragment_task)
@@ -40,8 +39,16 @@ class FragmentTaskActivity : AppCompatActivity(),TransferData {
     }
 
     override fun sendData(data: String) {
-        tvData = findViewById(R.id.tvDataFromFrag)
-        tvData.text = data
+        Toast.makeText(applicationContext, data, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onBackPressed() {
+        if(supportFragmentManager.backStackEntryCount>0){
+            supportFragmentManager.popBackStack()
+        }
+        else{
+            finish()
+        }
     }
 
 //    override fun onBackPressed() {

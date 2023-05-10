@@ -18,8 +18,8 @@ class RtPermissionReturnResult : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rt_permission_return_result)
         tvData = findViewById(R.id.tvReturnData)
-        btnNext.setOnClickListener {
-                dataPick.launch("Hello From Main ")
-        }
+//        btnNext.setOnClickListener {
+//                dataPick.launch("Hello From Main ")
+//        }
     }
 }

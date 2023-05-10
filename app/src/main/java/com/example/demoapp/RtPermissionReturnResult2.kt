@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 
 class RtPermissionReturnResult2 : AppCompatActivity() {
@@ -18,6 +20,9 @@ class RtPermissionReturnResult2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rt_permission_return_result2)
         btnImagePick = findViewById(R.id.btnImagePick)
+        val getTheImage = registerForActivityResult(ActivityResultContracts.GetContent()){
+            
+        }
 
         btnImagePick.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -39,7 +44,7 @@ class RtPermissionReturnResult2 : AppCompatActivity() {
     }
 
     private fun imagePicker() {
-
+        Toast.makeText(applicationContext, "Images", Toast.LENGTH_SHORT).show()
     }
 
 }

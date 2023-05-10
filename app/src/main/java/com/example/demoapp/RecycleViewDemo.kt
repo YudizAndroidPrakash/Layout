@@ -26,7 +26,7 @@ class RecycleViewDemo : AppCompatActivity() {
         btnDeleteAll = findViewById(R.id.btnDeleteAll)
 //        var sizeOfList = taskData.size
 
-        btnDeleteAll.setOnClickListener(object : android.view.View.OnClickListener {
+        btnDeleteAll.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 var j = taskData.filter { it.checked }
                 for (i in j){

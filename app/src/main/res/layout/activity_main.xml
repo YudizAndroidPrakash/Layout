@@ -80,10 +80,9 @@
         android:id="@+id/btnRunTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tlDemoButton"
-        app:layout_constraintStart_toStartOf="@id/tlDemoButton"
         android:text="Run Time "
-        />
+        app:layout_constraintStart_toStartOf="@id/tlDemoButton"
+        app:layout_constraintTop_toBottomOf="@id/tlDemoButton" />
 
     <Button
         android:id="@+id/btnFragment"
@@ -91,14 +90,22 @@
         android:layout_height="wrap_content"
         android:text="Fragment"
         app:layout_constraintStart_toStartOf="@id/rvDemo"
-        app:layout_constraintTop_toBottomOf="@id/rvDemo"
-        />
+        app:layout_constraintTop_toBottomOf="@id/rvDemo" />
+
     <Button
         android:id="@+id/btnAlertDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Alert Dialog"
         app:layout_constraintStart_toStartOf="@id/btnRunTime"
-        app:layout_constraintTop_toBottomOf="@id/btnRunTime"/>
+        app:layout_constraintTop_toBottomOf="@id/btnRunTime" />
+
+    <Button
+        android:id="@+id/btnNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Notification"
+        app:layout_constraintStart_toStartOf="@id/btnFragment"
+        app:layout_constraintTop_toBottomOf="@id/btnFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

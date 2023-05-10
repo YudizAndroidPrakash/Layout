@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnRuntime : Button
     lateinit var btnFragment : Button
     lateinit var btnAlertDialog : Button
+    lateinit var btnNotification :Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         btnRuntime = findViewById(R.id.btnRunTime)
         btnFragment = findViewById(R.id.btnFragment)
         btnAlertDialog = findViewById(R.id.btnAlertDialog)
+        btnNotification = findViewById(R.id.btnNotification)
 
 
         btnRegistartion.setOnClickListener {
@@ -93,6 +95,11 @@ class MainActivity : AppCompatActivity() {
 
         btnAlertDialog.setOnClickListener {
             val intent = Intent(this,AlertDialogActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnNotification.setOnClickListener {
+            val intent = Intent(this,NotificationActivity::class.java)
             startActivity(intent)
         }
 

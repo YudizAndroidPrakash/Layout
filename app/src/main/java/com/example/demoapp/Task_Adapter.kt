@@ -15,9 +15,7 @@ data class DataHoldPerson(
     var email: String,
     var mobileNumber: Int,
     var checked: Boolean = false
-) {
-
-}
+)
 
 class TaskAdapter(
     private val myDataList: ArrayList<DataHoldPerson>
