@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FrameLayoutActivity"
+>
+
+    <Button
+        android:id="@+id/btnWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/white"
+        />
+    <Button
+        android:id="@+id/btnBlack"
+        android:layout_marginTop="150dp"
+        android:layout_marginStart="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/black" />
+    <Button
+        android:id="@+id/btnGreen"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/btn_green"
+        />
+    <Button
+        android:id="@+id/btnBlue"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="150dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/bg_doremon"/>
+    <Button
+        android:id="@+id/btnDefault"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+/>
+
+</FrameLayout>

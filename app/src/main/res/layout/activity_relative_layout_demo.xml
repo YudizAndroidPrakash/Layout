@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RelativeLayoutDemoActivity">
+
+
+
+    <Button
+        android:id="@+id/btnFirst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnCenter"
+        android:layout_toStartOf="@id/btnCenter"
+
+        />
+    <Button
+        android:id="@+id/btnSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btnCenter"
+        android:layout_toEndOf="@id/btnCenter"
+        />
+    <Button
+        android:id="@+id/btnCenter"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        />
+    <Button
+        android:id="@+id/btnThird"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCenter"
+        android:layout_toStartOf="@id/btnCenter"
+        />
+    <Button
+        android:id="@+id/btnFourth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnCenter"
+        android:layout_toEndOf="@id/btnCenter"
+        />
+
+
+</RelativeLayout>

@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnLayout.setOnClickListener {
-            val intent = Intent(this,ViewDemo::class.java)
+            val intent = Intent(this,SecondLayoutDemo::class.java)
             startActivity(intent)
         }
 
