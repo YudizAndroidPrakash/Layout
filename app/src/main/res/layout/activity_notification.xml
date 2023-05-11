@@ -6,27 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".NotificationActivity"
     android:padding="20dp">
-    
-    
+
+
     <Button
-        android:id="@+id/btnNormalNotColl"
+        android:id="@+id/btnNormalNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Collapsable"
+        android:text="Normal Notification"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
     <Button
-        android:id="@+id/btnNormalNotExpand"
+        android:id="@+id/btnFullScreenNotification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Expandable"
-        app:layout_constraintStart_toStartOf="@id/btnNormalNotColl"
-        app:layout_constraintTop_toBottomOf="@id/btnNormalNotColl"
+        android:text="Full Screen Notification"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNormalNotification"
         />
-    
-    
+
+    <Button
+        android:id="@+id/btnFullYCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fully Custom"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnFullScreenNotification"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

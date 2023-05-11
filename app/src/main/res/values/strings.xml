@@ -8,4 +8,6 @@
     <string name="homeTab">Home</string>
     <string name="familyTab">Family</string>
     <string name="friendsTab">Friends</string>
+    <string name="notification">Notification</string>
+    <string name="alert_dialog">Alert Dialog</string>
 </resources>
