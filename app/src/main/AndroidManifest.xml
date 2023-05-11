@@ -36,9 +36,6 @@
             android:name=".AlertDialogActivity"
             android:exported="false" />
         <activity
-            android:name=".AlerDialoActivity"
-            android:exported="false" />
-        <activity
             android:name=".FragmentTaskActivity"
             android:exported="false" />
         <activity
