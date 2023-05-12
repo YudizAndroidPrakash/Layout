@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var btnFragment : Button
     lateinit var btnAlertDialog : Button
     lateinit var btnNotification :Button
+    lateinit var btnIntentFilter :Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         btnFragment = findViewById(R.id.btnFragment)
         btnAlertDialog = findViewById(R.id.btnAlertDialog)
         btnNotification = findViewById(R.id.btnNotification)
+        btnIntentFilter = findViewById(R.id.btnIntentFilter)
 
 
         btnRegistartion.setOnClickListener {
@@ -76,18 +78,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         rvDemo.setOnClickListener {
             val intent = Intent(this, RecycleViewDemo::class.java)
             startActivity(intent)
         }
 
-
         btnRuntime.setOnClickListener {
             val intent = Intent(this,RtPermissionReturnResult::class.java)
             startActivity(intent)
         }
-
         btnFragment.setOnClickListener {
             val intent = Intent(this,FragmentTaskActivity::class.java)
             startActivity(intent)
@@ -102,6 +101,15 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,NotificationActivity::class.java)
             startActivity(intent)
         }
+
+        btnIntentFilter.setOnClickListener {
+            var intent = Intent(this,IntentFilterActionCategoryDataActivity :: class.java)
+            startActivity(intent)
+        }
+
+
+
+
 
     }
 }

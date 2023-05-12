@@ -108,4 +108,13 @@
         app:layout_constraintStart_toStartOf="@id/btnFragment"
         app:layout_constraintTop_toBottomOf="@id/btnFragment" />
 
+    <Button
+        android:id="@+id/btnIntentFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Intent Filter"
+        app:layout_constraintStart_toStartOf="@id/btnAlertDialog"
+        app:layout_constraintTop_toBottomOf="@id/btnAlertDialog"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
