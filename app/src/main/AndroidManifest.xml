@@ -15,14 +15,37 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".WorkManagerDemo.WorkManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BroadCastReceiverSecondActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".MyBroadCastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".BroadCastReceiverOne"
+            android:exported="false" />
+        <activity
+            android:name=".RunTimePermissionDemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".IntentFilterActionCategoryDataActivity"
             android:exported="true">
-            <intent-filter >
-                <action android:name="android.intent.action.SEND"/>
-                <action android:name="android.intent.action.SEND_MULTIPLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="image/*"/>
-                <data android:mimeType="text/plain"/>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="image/*" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity
@@ -50,12 +73,6 @@
             android:name=".FragmentTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".RtPermissionReturnResult2"
-            android:exported="false" />
-        <activity
-            android:name=".RtPermissionReturnResult"
-            android:exported="false" />
-        <activity
             android:name=".RecycleViewDemo"
             android:exported="false" />
         <activity
@@ -81,6 +98,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -16,9 +16,8 @@ class CustomButtonWithprogressbar : AppCompatActivity() {
         setButton()
 
         btnProgressbar.setOnClickListener {
-//            Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "Clicked", Toast.LENGTH_SHORT).show()
             btnProgressbar.showLoader()
-
 
             Handler().postDelayed({
                 btnProgressbar.setText("Success")
@@ -26,12 +25,8 @@ class CustomButtonWithprogressbar : AppCompatActivity() {
             },5000)
 
         }
-
-
     }
     private  fun setButton(){
-
-
 //        btnProgressbar.setBackgroundColor(R.color.black)
 //        btnProgressbar.setBackgroundColor(resources.getColor(R.color.black))
         btnProgressbar.setText("Continue")

@@ -58,7 +58,7 @@ class NotificationActivity : AppCompatActivity() {
     private fun fullCustmoNotification() {
         val fullyCustomNotification = Intent(this, MainActivity::class.java)
         val fullyCustomNotificationPending =
-            PendingIntent.getActivity(this, 3, fullyCustomNotification, PendingIntent.FLAG_MUTABLE)
+            PendingIntent.getActivity(this, 3, fullyCustomNotification, PendingIntent.FLAG_IMMUTABLE)
         val notificationLayout = RemoteViews(packageName, R.layout.activity_collapse)
         val notificationLayoutExpanded = RemoteViews(packageName, R.layout.activity_expanded)
 
@@ -136,7 +136,7 @@ class NotificationActivity : AppCompatActivity() {
                 .setStyle(
                     NotificationCompat.BigPictureStyle()
                         .bigPicture(bitmapImage)
-                        .bigLargeIcon(null)
+//                        .bigLargeIcon(null)
                 )
 
                 .setContentIntent(pendingIntent)
@@ -154,7 +154,7 @@ class NotificationActivity : AppCompatActivity() {
                 .setContentText("Hello how are You ?")
                 .setLargeIcon(bitmapImage)
                 .setStyle(
-                    NotificationCompat.BigPictureStyle().bigPicture(bitmapImage).bigLargeIcon(null)
+                    NotificationCompat.BigPictureStyle().bigPicture(bitmapImage)
                 )
                 .setPriority(NotificationCompat.PRIORITY_MIN)
                 .setContentIntent(pendingIntent)

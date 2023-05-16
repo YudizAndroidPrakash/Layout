@@ -117,4 +117,22 @@
         app:layout_constraintTop_toBottomOf="@id/btnAlertDialog"
         />
 
+    <Button
+        android:id="@+id/btnForBroadCastReceiver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BroadCastReceiver"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/btnNotification"
+        app:layout_constraintTop_toBottomOf="@id/btnNotification"
+        />
+    <Button
+        android:id="@+id/btnWorkManager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Work Manager"
+        app:layout_constraintStart_toStartOf="@id/btnIntentFilter"
+        app:layout_constraintTop_toBottomOf="@id/btnIntentFilter"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

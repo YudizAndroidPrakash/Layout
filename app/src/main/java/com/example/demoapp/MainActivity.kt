@@ -6,22 +6,25 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.demoapp.WorkManagerDemo.WorkManagerActivity
 import com.google.android.material.color.DynamicColors
 
 class MainActivity : AppCompatActivity() {
-    lateinit var btnRegistartion: Button
-    lateinit var btnProfile: Button
-    lateinit var btnMView: Button
-    lateinit var btnCustomView: Button
-    lateinit var btnLayout: Button
-    lateinit var btnVectorShapeDemo: Button
-    lateinit var tabLayoutDemo: Button
-    lateinit var rvDemo: Button
-    lateinit var btnRuntime : Button
-    lateinit var btnFragment : Button
-    lateinit var btnAlertDialog : Button
-    lateinit var btnNotification :Button
-    lateinit var btnIntentFilter :Button
+   private lateinit var btnRegistartion: Button
+    private  lateinit var btnProfile: Button
+    private lateinit var btnMView: Button
+    private lateinit var btnCustomView: Button
+    private lateinit var btnLayout: Button
+    private lateinit var btnVectorShapeDemo: Button
+    private lateinit var tabLayoutDemo: Button
+    private lateinit var rvDemo: Button
+    private lateinit var btnRuntime : Button
+    private lateinit var btnFragment : Button
+    private lateinit var btnAlertDialog : Button
+    private  lateinit var btnNotification :Button
+    private  lateinit var btnIntentFilter :Button
+    private  lateinit var btnBroadCastReceiver: Button
+    private  lateinit var btnWorkManagerDemo : Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +45,14 @@ class MainActivity : AppCompatActivity() {
         btnAlertDialog = findViewById(R.id.btnAlertDialog)
         btnNotification = findViewById(R.id.btnNotification)
         btnIntentFilter = findViewById(R.id.btnIntentFilter)
+        btnBroadCastReceiver = findViewById(R.id.btnForBroadCastReceiver)
+        btnWorkManagerDemo = findViewById(R.id.btnWorkManager)
+
+
+        btnBroadCastReceiver.setOnClickListener {
+            val  i = Intent(this,BroadCastReceiverOne::class.java)
+            startActivity(i)
+        }
 
 
         btnRegistartion.setOnClickListener {
@@ -84,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnRuntime.setOnClickListener {
-            val intent = Intent(this,RtPermissionReturnResult::class.java)
+            val intent = Intent(this,RunTimePermissionDemoActivity::class.java)
             startActivity(intent)
         }
         btnFragment.setOnClickListener {
@@ -103,11 +114,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnIntentFilter.setOnClickListener {
-            var intent = Intent(this,IntentFilterActionCategoryDataActivity :: class.java)
+            val intent = Intent(this,IntentFilterActionCategoryDataActivity :: class.java)
             startActivity(intent)
         }
 
 
+
+        btnWorkManagerDemo.setOnClickListener {
+            val i = Intent(this,WorkManagerActivity::class.java)
+            startActivity(i)
+        }
 
 
 
