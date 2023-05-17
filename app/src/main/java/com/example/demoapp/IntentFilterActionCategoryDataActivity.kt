@@ -31,7 +31,7 @@ class IntentFilterActionCategoryDataActivity : AppCompatActivity() {
 //        val imgData : Uri? = intent.data
 
         //using bundle
-        if (intent.hasExtra("android.intent.extra.STREAM")) {
+        if (intent.hasExtra(Intent.EXTRA_STREAM)) {
 //           val bundle  = intent.extras
 //            val strUri =Uri.parse( bundle!!.get("android.intent.extra.STREAM").toString())
 //            ivImageShared.setImageURI(strUri)

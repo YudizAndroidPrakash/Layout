@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.WorkManagerDemo.WorkManagerActivity
+import com.example.demoapp.savefile.SaveImageActivity
 import com.google.android.material.color.DynamicColors
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var btnIntentFilter :Button
     private  lateinit var btnBroadCastReceiver: Button
     private  lateinit var btnWorkManagerDemo : Button
+    private  lateinit var btnSaveImageToDevice : Button
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         btnIntentFilter = findViewById(R.id.btnIntentFilter)
         btnBroadCastReceiver = findViewById(R.id.btnForBroadCastReceiver)
         btnWorkManagerDemo = findViewById(R.id.btnWorkManager)
+        btnSaveImageToDevice = findViewById(R.id.btnSaveImageToDevice)
 
 
         btnBroadCastReceiver.setOnClickListener {
@@ -123,6 +126,14 @@ class MainActivity : AppCompatActivity() {
         btnWorkManagerDemo.setOnClickListener {
             val i = Intent(this,WorkManagerActivity::class.java)
             startActivity(i)
+        }
+
+
+
+
+        btnSaveImageToDevice.setOnClickListener {
+            val intent = Intent(this,SaveImageActivity::class.java)
+            startActivity(intent)
         }
 
 

@@ -1,9 +1,8 @@
 package com.example.demoapp.WorkManagerDemo
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.Observer
@@ -17,6 +16,7 @@ class WorkManagerActivity : AppCompatActivity() {
     private  lateinit var  btnDownloadUrl : Button
     private  lateinit var tvRunningStatus : TextView
     private lateinit var edUrl : EditText
+    private lateinit var  pbDownloadingProcess : ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +28,9 @@ class WorkManagerActivity : AppCompatActivity() {
         btnDownloadUrl = findViewById(R.id.btnDownloadFile)
         tvRunningStatus = findViewById(R.id.tvStatus)
         edUrl = findViewById(R.id.etUrlDownload)
+        pbDownloadingProcess = findViewById(R.id.pbDownloadProcess)
+        pbDownloadingProcess.visibility = View.GONE
+
         var myWorkManagerDemo = WorkManager.getInstance()
         val data = Data.Builder()
             .putString("iteration",edUrl.text.toString())
@@ -52,8 +55,19 @@ class WorkManagerActivity : AppCompatActivity() {
             .observe(this) {
                 if (it != null) {
                     tvRunningStatus.text = it.state.toString()
+                    pbDownloadingProcess.visibility = View.VISIBLE
+                    val setTheProcess = it.progress.keyValueMap.values
+                    Toast.makeText(applicationContext, "${it.progress.keyValueMap.values}", Toast.LENGTH_SHORT).show()
+                    for(i in setTheProcess){
+                       pbDownloadingProcess.progress = i.toString().toInt()
+                   }
+
+//                   val progres = it.progress.keyValueMap.values
+//                    pbDownloadingProcess.setProgress()
                 }
+
             }
+
     }
 }
 

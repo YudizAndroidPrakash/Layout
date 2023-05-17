@@ -42,25 +42,24 @@ class BroadCastReceiverSecondActivity : AppCompatActivity() {
         registerReceiver(br, intent)
     }
 
-    override fun onPause() {
-        super.onPause()
+     fun onDestroyOne() : String {
+        super.onDestroy()
         unregisterReceiver(br)
+        return "Destroy"
     }
-
-    override fun onRestart() {
-        super.onRestart()
-        intent.addAction(Intent.ACTION_BATTERY_CHANGED)
+    override fun onResume() {
+        super.onResume()
         registerReceiver(br,intent)
     }
 
 
 
     fun notificationBatteryPer(){
-        val  intentAction = Intent(this,BroadCastReceiverSecondActivity::class.java)
-        intentAction.action = onRestart().toString()
-        var pendingIntent = PendingIntent.getBroadcast(applicationContext,101,intentAction,PendingIntent.FLAG_IMMUTABLE)
+//        val  intentAction = Intent(this,BroadCastReceiverSecondActivity::class.java)
+//        intentAction.actio
+//        var pendingIntent = PendingIntent.getBroadcast(applicationContext,101,intentAction,PendingIntent.FLAG_IMMUTABLE)
         val  intentAction1 = Intent(this,BroadCastReceiverSecondActivity::class.java)
-        intentAction1.action = onPause().toString()
+        intentAction1.action = onDestroyOne()
        val pendingIntent1 = PendingIntent.getBroadcast(applicationContext,102,intentAction1,PendingIntent.FLAG_IMMUTABLE)
 
 
@@ -70,7 +69,7 @@ class BroadCastReceiverSecondActivity : AppCompatActivity() {
             .setSmallIcon(R.drawable.ic_battery_charging_full)
             .setContentTitle("Battery")
             .setContentText(tvSecondBatteryPer.text.toString())
-            .addAction(R.drawable.snap_icon,"Start",pendingIntent)
+//            .addAction(R.drawable.snap_icon,"Start",pendingIntent)
             .setAutoCancel(false)
             .addAction(R.drawable.snap_icon,"Stop",pendingIntent1)
         notificationChannel = NotificationChannel("Battery Level two","Battery Percentage",NotificationManager.IMPORTANCE_HIGH)
