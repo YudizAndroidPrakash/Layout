@@ -25,8 +25,6 @@ class BroadCastReceiverSecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_broad_cast_receiver_second)
 
-
-
         tvSecondBatteryPer = findViewById(R.id.tvSecondBetteryPercentage)
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
@@ -42,10 +40,9 @@ class BroadCastReceiverSecondActivity : AppCompatActivity() {
         registerReceiver(br, intent)
     }
 
-     fun onDestroyOne() : String {
+    override fun onDestroy()  {
         super.onDestroy()
         unregisterReceiver(br)
-        return "Destroy"
     }
     override fun onResume() {
         super.onResume()
@@ -58,11 +55,8 @@ class BroadCastReceiverSecondActivity : AppCompatActivity() {
 //        val  intentAction = Intent(this,BroadCastReceiverSecondActivity::class.java)
 //        intentAction.actio
 //        var pendingIntent = PendingIntent.getBroadcast(applicationContext,101,intentAction,PendingIntent.FLAG_IMMUTABLE)
-        val  intentAction1 = Intent(this,BroadCastReceiverSecondActivity::class.java)
-        intentAction1.action = onDestroyOne()
+        val  intentAction1 = Intent(this,BroadCastReceiverSecondActivity::class.java).setAction("Start")
        val pendingIntent1 = PendingIntent.getBroadcast(applicationContext,102,intentAction1,PendingIntent.FLAG_IMMUTABLE)
-
-
 
 
         val builder = NotificationCompat.Builder(this,"Battery Level two")
@@ -76,9 +70,4 @@ class BroadCastReceiverSecondActivity : AppCompatActivity() {
         notificationManager.createNotificationChannel(notificationChannel)
         notificationManager.notify(2,builder.build())
     }
-
-
-
-
-
 }
