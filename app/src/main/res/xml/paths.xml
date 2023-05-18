@@ -2,5 +2,7 @@
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
 <cache-path
     name="shared_image"
-    path="images/"/>
+    path="Images/"/>
 </paths>
+
+

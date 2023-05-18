@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.example.demoapp.WorkManagerDemo.WorkManagerActivity
+import com.example.demoapp.workmanagerdemo.WorkManagerActivity
 import com.example.demoapp.savefile.SaveImageActivity
 import com.google.android.material.color.DynamicColors
 

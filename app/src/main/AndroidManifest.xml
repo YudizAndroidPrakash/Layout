@@ -5,7 +5,8 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -22,19 +23,21 @@
             android:name=".savefile.SaveImageActivity"
             android:exported="true" />
         <activity
-            android:name=".WorkManagerDemo.WorkManagerActivity"
+            android:name=".workmanagerdemo.WorkManagerActivity"
             android:exported="false" />
         <activity
             android:name=".BroadCastReceiverSecondActivity"
-            android:exported="false" />
-
-        <receiver
-            android:name=".MyBroadCastReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BATTERY_CHANGED" />
             </intent-filter>
-        </receiver>
+        </activity>
+
+
+        <!--        <receiver-->
+        <!--            android:name=".MyBroadCastReceiver"-->
+        <!--            android:exported="false">-->
+        <!--        </receiver>-->
 
         <activity
             android:name=".BroadCastReceiverOne"
@@ -48,9 +51,11 @@
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="image/*" />
-                <data android:mimeType="text/plain"/>
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity
@@ -106,16 +111,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <provider
-            android:authorities="com.example.demoapp.provider"
             android:name="androidx.core.content.FileProvider"
-                android:exported="false"
-            android:grantUriPermissions="true"
-            >
+            android:authorities="com.example.demoapp.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/paths"
-                />
+                android:resource="@xml/paths"/>
         </provider>
     </application>
 
