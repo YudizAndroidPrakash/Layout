@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.workmanagerdemo.WorkManagerActivity
-import com.example.demoapp.savefile.SaveImageActivity
+import com.example.demoapp.savefile.SaveImageSecondActivity
 import com.google.android.material.color.DynamicColors
 
 class MainActivity : AppCompatActivity() {
@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
 
 
         btnSaveImageToDevice.setOnClickListener {
-            val intent = Intent(this,SaveImageActivity::class.java)
+            val intent = Intent(this,SaveImageSecondActivity::class.java)
             startActivity(intent)
         }
 
