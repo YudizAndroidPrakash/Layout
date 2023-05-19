@@ -3,10 +3,12 @@ package com.example.demoapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demoapp.animation.AnimationActivity
 
 
 //hold the data of person
@@ -37,6 +39,7 @@ class TaskAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
 
+
         holder.icDelete!!.setOnClickListener {
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, myDataList.size)
@@ -60,6 +63,8 @@ class TaskAdapter(
 
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
+
+
         private var tvName: TextView? = null
         private var tvEmail: TextView? = null
         private var tvMobile: TextView? = null
@@ -67,6 +72,7 @@ class TaskAdapter(
         var selected: CheckBox? = null
 
         init {
+            ItemView.animation = AnimationUtils.loadAnimation(ItemView.context,R.anim.translate)
             tvName = ItemView.findViewById(R.id.tvPersonName)
             tvEmail = ItemView.findViewById(R.id.tvPersonEmail)
             tvMobile = ItemView.findViewById(R.id.tvPersonMob)
@@ -75,6 +81,8 @@ class TaskAdapter(
         }
 
         fun bind(position: Int, myDataList: ArrayList<DataHoldPerson>, holder: ViewHolder) {
+
+
             val i = myDataList[position]
             tvName!!.text = i.name
             tvEmail!!.text = i.email

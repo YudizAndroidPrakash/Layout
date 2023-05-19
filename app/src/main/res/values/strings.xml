@@ -10,4 +10,10 @@
     <string name="friendsTab">Friends</string>
     <string name="notification">Notification</string>
     <string name="alert_dialog">Alert Dialog</string>
+    <string name="rotate">rotate</string>
+    <string name="blink">Blink</string>
+    <string name="move">Move</string>
+    <string name="flip">Flip</string>
+    <string name="moveobject">Move</string>
+    <string name="zoom">Zoom</string>
 </resources>

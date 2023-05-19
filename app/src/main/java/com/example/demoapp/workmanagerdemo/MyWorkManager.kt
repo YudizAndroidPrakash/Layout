@@ -86,23 +86,46 @@ class MyWorkManager(context: Context, params: WorkerParameters) : Worker(context
 
 
 
-
+        val data = byteArrayOf(1024.toByte())
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             val contentValue = ContentValues().apply {
                 put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
                 put(MediaStore.MediaColumns.MIME_TYPE, mimeType)
                 put(MediaStore.MediaColumns.RELATIVE_PATH, "Download/saveFile")
             }
+//before change
+//            val resolver = applicationContext.contentResolver
+//            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValue)
+//
+//            return if (uri != null) {
+//
+//                URL(fileUrl).openStream().use { input ->
+//                    resolver.openOutputStream(uri).use { output ->
+//                        input.copyTo(output!!, DEFAULT_BUFFER_SIZE)
+//
+//                    }
+//                }
 
+                //after change
             val resolver = applicationContext.contentResolver
             val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValue)
-
             return if (uri != null) {
-
+                val url = URL(fileUrl)
+                val connection = url.openConnection()
+                connection.content
+                val sizeOfUrl = connection.contentLength
+                var total = 0
                 URL(fileUrl).openStream().use { input ->
                     resolver.openOutputStream(uri).use { output ->
-                        input.copyTo(output!!, DEFAULT_BUFFER_SIZE)
-
+                        var  count = input.read(data)
+                        while (count != -1){
+                            total += count
+                            setProgressAsync(workDataOf("progress"  to ((total * 100)/sizeOfUrl)))
+                            input.copyTo(output!!, DEFAULT_BUFFER_SIZE)
+                            var status = output?.write(data,0,count)
+                            Log.d("status","$status")
+                            count =  input.read(data)
+                        }
                     }
                 }
                 uri

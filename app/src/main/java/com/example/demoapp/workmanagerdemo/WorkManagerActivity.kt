@@ -1,6 +1,7 @@
 package com.example.demoapp.workmanagerdemo
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -53,18 +54,20 @@ class WorkManagerActivity : AppCompatActivity() {
         btnCancel.setOnClickListener {
             myWorkManagerDemo.cancelWorkById(myWorkRequest.id)
         }
-
+            val handler = Handler()
         myWorkManagerDemo.getWorkInfoByIdLiveData(myWorkRequest.id)
             .observe(this) {
                 if (it != null) {
                     tvRunningStatus.text = it.state.toString()
                     pbDownloadingProcess.visibility = View.VISIBLE
                     val pbDownloading = it.progress.getInt(PROGRESS,0)
-                    pbDownloadingProcess.progress  = pbDownloading
 
                     Thread(Runnable {
+                        handler.post{
+                            pbDownloadingProcess.progress  = pbDownloading
+                        }
 
-                    })
+                    }).start()
 //                    Toast.makeText(this, "${it.progress}", Toast.LENGTH_SHORT).show()
 //                    val setTheProcess = it.progress.keyValueMap.values
 //                    Toast.makeText(applicationContext, "${it.progress}", Toast.LENGTH_SHORT ).show()
@@ -78,4 +81,14 @@ class WorkManagerActivity : AppCompatActivity() {
 
     }
 }
+
+//myWorkManagerDemo.getWorkInfoByIdLiveData(myWorkRequest.id)
+//.observe(this) {
+//    if (it != null) {
+//        tvRunningStatus.text = it.state.toString()
+//        pbDownloadingProcess.visibility = View.VISIBLE
+//        val pbDownloading = it.progress.getInt(PROGRESS, 0)
+//        pbDownloadingProcess.max = 100
+//        pbDownloadingProcess.progress = pbDownloading
+//
 
