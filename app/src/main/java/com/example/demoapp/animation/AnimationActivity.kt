@@ -8,9 +8,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import com.example.demoapp.R
-import java.io.ObjectStreamException
 
 class AnimationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +22,7 @@ class AnimationActivity : AppCompatActivity() {
             }
 
         findViewById<Button>(R.id.btnMove).setOnClickListener {
-            val move  = AnimationUtils.loadAnimation(this,R.anim.move)
+            val move  = AnimationUtils.loadAnimation(this,R.anim.moveright)
             iv.startAnimation(move)
         }
         findViewById<Button>(R.id.btnBlink).setOnClickListener {
