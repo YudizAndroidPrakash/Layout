@@ -17,6 +17,7 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
 
     private lateinit var bntPickImage: Button
     private lateinit var ivPickImage: ImageView
+    private lateinit var btnNext: Button
     private var result = registerForActivityResult(ActivityResultContracts.GetContent()) {
         ivPickImage.setImageURI(it)
     }
@@ -30,6 +31,15 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
 
         bntPickImage = findViewById(R.id.btnPickImage)
         ivPickImage = findViewById(R.id.ivOfPick)
+        btnNext = findViewById(R.id.btnNext)
+
+        btnNext.setOnClickListener {
+            val intent = Intent(this, PassMessageActivity::class.java)
+            startActivityForResult(intent, 1)
+        }
+
+
+
         bntPickImage.setOnClickListener {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
