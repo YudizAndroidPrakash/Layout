@@ -12,9 +12,11 @@ import androidx.core.net.toUri
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
+import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.net.URL
+import java.net.URLConnection
 
 class MyWorkManager(context: Context, params: WorkerParameters) : Worker(context, params) {
 
@@ -24,29 +26,80 @@ class MyWorkManager(context: Context, params: WorkerParameters) : Worker(context
         val imageUrl: String? = inputData.getString("imageUrl")
 
 
-//        val paramValue = "param\\with\\backslash"
-//        val yourURLStr = URLEncoder.encode(imageUrl, "UTF-8")
-        val url = URL(imageUrl)
-        val urlSize  = url.openConnection().contentLength
-        val result = getSavedFileUri(imageName!!.toString(), url.toString())
+
+//        val url = URL("https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Pizigani_1367_Chart_10MB.jpg/8192px-Pizigani_1367_Chart_10MB.jpg")
+       val url = URL(imageUrl)
+        //open connection
+        val urlConnection : URLConnection = url.openConnection()
+        //connect the url
+        urlConnection.connect()
+        //length file
+        val lenghtOfFile = urlConnection.contentLength
+
+
         try {
-            return if (result != null) {
-                for(i in 0..urlSize) {
-                    Thread.sleep(imageSize / 10)
-                    if (i == i * 10) {
-                        setProgressAsync(workDataOf(Pair("Download", i * 10)))
-                        break
-                    }
-                }
-                 Result.success()
-            } else {
-                Result.failure()
+//            download the file with default buffer size
+            val input = BufferedInputStream(url.openStream())
+//            output Stream
+//            val output = FileOutputStream(
+//                Environment
+//                    .getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString())
+
+            val output = FileOutputStream("/storage/emulated/0/DCIM/+${imageName}.jpg")
+            Log.d("status",output.toString())
+            val data = ByteArray(2048)
+            var total: Long = 0
+            var count = input.read(data)
+            while (count != -1) {
+                total += count
+                setProgressAsync(workDataOf(Pair("process", (total * 100) / lenghtOfFile)))
+                output.write(data, 0, count)
+                count = input.read(data)
             }
+            //flushing output
+            output.flush()
+            //closing the stream
+            output.close()
+            input.close()
+            return Result.success()
         } catch (e: InterruptedException) {
-            Toast.makeText(applicationContext, "$e", Toast.LENGTH_SHORT).show()
+            Log.e("e", "${e.message}")
+            return Result.failure()
         }
 
-        return Result.retry()
+
+
+
+
+
+
+
+
+
+
+//        val paramValue = "param\\with\\backslash"
+//        val yourURLStr = URLEncoder.encode(imageUrl, "UTF-8")
+//        val url = URL(imageUrl)
+//        val urlSize  = url.openConnection().contentLength
+
+//        try {
+//            return if (result != null) {
+//                for(i in 0..urlSize) {
+//                    Thread.sleep(imageSize / 10)
+//                    if (i == i * 10) {
+//                        setProgressAsync(workDataOf(Pair("Download", i * 10)))
+//                        break
+//                    }
+//                }
+//                 Result.success()
+//            } else {
+//                Result.failure()
+//            }
+//        } catch (e: InterruptedException) {
+//            Toast.makeText(applicationContext, "$e", Toast.LENGTH_SHORT).show()
+//        }
+//
+//        return Result.retry()
 
 //        val data1 = Data.Builder()
 //            .putString("outputResult","Task Finished")
@@ -78,21 +131,21 @@ class MyWorkManager(context: Context, params: WorkerParameters) : Worker(context
     }
 
 
-    private fun getSavedFileUri(
-        fileName: String, fileUrl: String?
-    ): Uri? {
-        val fileName = "$fileName.jpg"
-        val mimeType = "image/*"
-
-
-
-        val data = byteArrayOf(1024.toByte())
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            val contentValue = ContentValues().apply {
-                put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
-                put(MediaStore.MediaColumns.MIME_TYPE, mimeType)
-                put(MediaStore.MediaColumns.RELATIVE_PATH, "Download/saveFile")
-            }
+//    private fun getSavedFileUri(
+//        fileName: String, fileUrl: String?
+//    ): Uri? {
+//        val fileName = "$fileName.jpg"
+//        val mimeType = "image/*"
+//
+//
+//
+//        val data = byteArrayOf(1024.toByte())
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+//            val contentValue = ContentValues().apply {
+//                put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+//                put(MediaStore.MediaColumns.MIME_TYPE, mimeType)
+//                put(MediaStore.MediaColumns.RELATIVE_PATH, "Download/saveFile")
+//            }
 //before change
 //            val resolver = applicationContext.contentResolver
 //            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValue)
@@ -107,49 +160,49 @@ class MyWorkManager(context: Context, params: WorkerParameters) : Worker(context
 //                }
 
                 //after change
-            val resolver = applicationContext.contentResolver
-            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValue)
-            return if (uri != null) {
-                val url = URL(fileUrl)
-                val connection = url.openConnection()
-                connection.content
-                val sizeOfUrl = connection.contentLength
-                var total = 0
-                URL(fileUrl).openStream().use { input ->
-                    resolver.openOutputStream(uri).use { output ->
-                        var  count = input.read(data)
-                        while (count != -1){
-                            total += count
-                            setProgressAsync(workDataOf("progress"  to ((total * 100)/sizeOfUrl)))
-                            input.copyTo(output!!, DEFAULT_BUFFER_SIZE)
-                            var status = output?.write(data,0,count)
-                            Log.d("status","$status")
-                            count =  input.read(data)
-                        }
-                    }
-                }
-                uri
-            } else {
-                null
-            }
-
-        } else {
-            val target = File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
-                fileName
-            )
-            URL(fileUrl).openStream().use { input ->
-                FileOutputStream(target).use { output ->
-                    input.copyTo(output)
-
-
-                }
-            }
+//            val resolver = applicationContext.contentResolver
+//            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValue)
+//            return if (uri != null) {
+//                val url = URL(fileUrl)
+//                val connection = url.openConnection()
+//                connection.content
+//                val sizeOfUrl = connection.contentLength
+//                var total = 0
+//                URL(fileUrl).openStream().use { input ->
+//                    resolver.openOutputStream(uri).use { output ->
+//                        var  count = input.read(data)
+//                        while (count != -1){
+//                            total += count
+//                            setProgressAsync(workDataOf("progress"  to ((total * 100)/sizeOfUrl)))
+//                            input.copyTo(output!!, DEFAULT_BUFFER_SIZE)
+//                            var status = output?.write(data,0,count)
+//                            Log.d("status","$status")
+//                            count =  input.read(data)
+//                        }
+//                    }
+//                }
+//                uri
+//            } else {
+//                null
+//            }
+//
+//        } else {
+//            val target = File(
+//                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+//                fileName
+//            )
+//            URL(fileUrl).openStream().use { input ->
+//                FileOutputStream(target).use { output ->
+//                    input.copyTo(output)
+//
+//
+//                }
+//            }
 //            imageSize = target.length()
-            return target.toUri()
-        }
-
-    }
+//            return target.toUri()
+//        }
+//
+//    }
 //         for(i in 1..count){
 //            Log.d("$i","I value")
 //            try {
