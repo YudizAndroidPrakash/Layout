@@ -2,12 +2,14 @@ package com.example.demoapp.animation
 
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
+import androidx.core.app.ActivityOptionsCompat
 import com.example.demoapp.R
 
 class AnimationActivity : AppCompatActivity() {
@@ -49,6 +51,35 @@ class AnimationActivity : AppCompatActivity() {
                 repeatCount = 1
                 repeatMode = ObjectAnimator.REVERSE
             }.start()
+        }
+
+
+
+        findViewById<Button>(R.id.btnNext).setOnClickListener {
+            val intent = Intent(this,SecondAnimationActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(R.anim.move,R.anim.move)
+            // Create an intent to start the new activity
+//            val intent = Intent (this, MainActivity2::class.java)
+//            val options = ActivityOptions.makeCustomAnimation (this, R.anim.move,R.anim.move)
+
+// Start the new activity with the intent and the options
+//            startActivity (intent, options.toBundle ())
+        }
+
+        findViewById<Button>(R.id.btnPairAnimation).setOnClickListener {
+            val intent = Intent(this,SecondAnimationActivity::class.java)
+            val option = androidx.core.app.ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,androidx.core.util.Pair(iv,"pair"))
+            startActivity(intent,option.toBundle())
+        }
+
+        findViewById<Button>(R.id.btnSingle).setOnClickListener {
+            val intent = Intent(this,SecondAnimationActivity::class.java)
+            val sharedAnimation = ActivityOptionsCompat.makeSceneTransitionAnimation(this,iv,"share")
+
+            startActivity(intent,sharedAnimation!!.toBundle())
+
         }
 
 
