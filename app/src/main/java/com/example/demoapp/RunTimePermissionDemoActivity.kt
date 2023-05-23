@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 
@@ -18,9 +19,14 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
     private lateinit var bntPickImage: Button
     private lateinit var ivPickImage: ImageView
     private lateinit var btnNext: Button
-    private var result = registerForActivityResult(ActivityResultContracts.GetContent()) {
-        ivPickImage.setImageURI(it)
-    }
+    private var result =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                Toast.makeText(applicationContext, "${it.data}", Toast.LENGTH_SHORT).show()
+            } else {
+                ivPickImage.setImageURI(it.data!!.data)
+            }
+        }
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +41,9 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
 
         btnNext.setOnClickListener {
             val intent = Intent(this, PassMessageActivity::class.java)
-            startActivityForResult(intent, 1)
+//            startActivityForResult(intent, 1)
+
+            result.launch(intent)
         }
 
 
@@ -54,9 +62,11 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
                 }
 
             } else {
-                if(checkSelfPermission(android.Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED){
-                    requestPermissions(arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES),
-                        permission_code)
+                if (checkSelfPermission(android.Manifest.permission.READ_MEDIA_IMAGES) == PackageManager.PERMISSION_DENIED) {
+                    requestPermissions(
+                        arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES),
+                        permission_code
+                    )
                 }
                 pickImageFromInGellary()
             }
@@ -64,9 +74,11 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
 
         }
     }
+
     companion object {
-        private  const val  permission_code = 1001
+        private const val permission_code = 1001
     }
+
     //handle the permission result
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -86,13 +98,12 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
 
                             val intent = Intent()
                             intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
-                            val uri : Uri = Uri.fromParts("package",packageName,null)
+                            val uri: Uri = Uri.fromParts("package", packageName, null)
                             intent.data = uri
                             startActivity(intent)
                             dialog.dismiss()
                         }
-                        setNegativeButton("Cancel"){
-                                dialog ,_ ->
+                        setNegativeButton("Cancel") { dialog, _ ->
                             dialog.dismiss()
 //                            finish()
                         }
@@ -101,8 +112,11 @@ class RunTimePermissionDemoActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun pickImageFromInGellary() {
-        result.launch("image/*")
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        result.launch(intent)
     }
 
 }
