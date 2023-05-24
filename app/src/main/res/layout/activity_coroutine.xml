@@ -6,4 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".multithreading.CoroutineActivity">
 
+
+    <TextView
+        android:id="@+id/tvSum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sum print"
+        android:padding="10dp"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/tvMultiple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Multiplication"
+        android:textAlignment="center"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_get_sum"
+        />
+
+
+    <Button
+        android:id="@+id/btn_get_sum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get result"
+        app:layout_constraintTop_toBottomOf="@id/tvSum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

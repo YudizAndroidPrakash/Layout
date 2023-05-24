@@ -19,32 +19,22 @@ class SingleThreadActivity : AppCompatActivity() {
         setContentView(R.layout.activity_single_thread)
 
 
-        try {
-            Runnable {
-                val msg : TextView  = findViewById(R.id.tvOutputSum)
-                Toast.makeText(this, "runcall", Toast.LENGTH_SHORT).show()
-                msg.text = "HEllo"
-            }.run()
-        }catch (e : java.lang.Exception){
-            e.message
+
+        val btnGetsum : Button = findViewById(R.id.btn_get_sum_of)
+        val tvPrintSum : TextView = findViewById(R.id.tv_sum)
+
+        btnGetsum.setOnClickListener {
+            val one =20
+            val two = 30
+            var result = 0
+
+            val getSum = Thread {
+                result = one + two
+            }
+            getSum.start()
+            tvPrintSum.text = result.toString()
         }
 
-//                val btnPerformOp : Button =findViewById(R.id.btnSumOperation)
-//
-//      btnPerformOp.setOnClickListener {
-//
-//        val firstValue = 10
-//            val secondValue = 20
-//            var sum = 0
-//            try {
-//                val threadDemo  = Runnable {
-//                     sum = firstValue + secondValue
-//                }
-//                threadDemo.run()
-////                tvOutputData.text = sum.toString()
-//            }catch (e : InterruptedException){
-//                e.message
-//            }
-//        }
+
     }
 }
