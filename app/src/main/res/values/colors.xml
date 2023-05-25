@@ -14,4 +14,14 @@
     <color name="btn_green">#99ff66</color>
     <color name="gradient_color">#F36D6D</color>
     <color name="list_data_bg_yello">#FFFF00</color>
+
+
+    //room data base color
+
+    <color name="hall_layout_background_color">#f6f6f6</color>
+    <color name="et_text_color">#FFFFFF</color>
+
+    //room data base demo
+    <color name="tv_text_color">#373B48</color>
+
 </resources>

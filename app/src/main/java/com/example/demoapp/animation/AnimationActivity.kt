@@ -70,7 +70,7 @@ class AnimationActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnPairAnimation).setOnClickListener {
             val intent = Intent(this,SecondAnimationActivity::class.java)
             val option = androidx.core.app.ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this,androidx.core.util.Pair(iv,"pair"))
+                this,androidx.core.util.Pair(iv,"pair"),androidx.core.util.Pair(iv,"pair"))
             startActivity(intent,option.toBundle())
         }
 

@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.animation.AnimationActivity
-import com.example.demoapp.multithreading.SingleThreadActivity
 import com.example.demoapp.multithreading.ThreadTaskActivity
+import com.example.demoapp.roomdatabase.ui.HomeActivity
+import com.example.demoapp.roomdatabase.ui.LoginActivity
+import com.example.demoapp.roomdatabase.ui.UserRegistrationActivity
 import com.example.demoapp.workmanagerdemo.WorkManagerActivity
 import com.example.demoapp.savefile.SaveImageSecondActivity
 import com.google.android.material.color.DynamicColors
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var btnSaveImageToDevice : Button
     private  lateinit var  btnAnimation : Button
     private  lateinit var btnThread : Button
+
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         btnSaveImageToDevice = findViewById(R.id.btnSaveImageToDevice)
         btnAnimation = findViewById(R.id.btnAnimation)
         btnThread = findViewById(R.id.btnThreadDemo)
+
 
 
         btnBroadCastReceiver.setOnClickListener {
@@ -148,6 +152,9 @@ class MainActivity : AppCompatActivity() {
 
         btnThread.setOnClickListener {
             startActivity(Intent(this,ThreadTaskActivity::class.java))
+        }
+        findViewById<Button>(R.id.btn_room_database).setOnClickListener {
+            startActivity(Intent(this,UserRegistrationActivity::class.java))
         }
     }
 }

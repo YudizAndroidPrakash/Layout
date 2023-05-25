@@ -16,4 +16,9 @@
     <string name="flip">Flip</string>
     <string name="moveobject">Move</string>
     <string name="zoom">Zoom</string>
+    <string name="roomdatabase">Room Data base</string>
+    <string name="display_data">display Data</string>
+    <string name="task_title">Task Title</string>
+    <string name="enter_task_description">Enter Task Description</string>
+    <string name="add_task">add task</string>
 </resources>

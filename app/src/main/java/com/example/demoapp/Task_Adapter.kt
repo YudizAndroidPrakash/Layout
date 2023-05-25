@@ -64,7 +64,6 @@ class TaskAdapter(
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
 
-
         private var tvName: TextView? = null
         private var tvEmail: TextView? = null
         private var tvMobile: TextView? = null
@@ -81,8 +80,6 @@ class TaskAdapter(
         }
 
         fun bind(position: Int, myDataList: ArrayList<DataHoldPerson>, holder: ViewHolder) {
-
-
             val i = myDataList[position]
             tvName!!.text = i.name
             tvEmail!!.text = i.email
