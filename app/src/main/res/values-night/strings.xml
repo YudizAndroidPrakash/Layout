@@ -9,6 +9,19 @@
     <string name="display_data">display Data</string>
     <string name="task_title">Task Title</string>
     <string name="enter_task_description">Enter Task Description</string>
-    <string name="add_task">add task</string>
+    <string name="add_task">Task Details</string>
+    <string name="hello_msg">Hello</string>
+    <string name="log_out_text">Log out</string>
+    <string name="add_task_to_the_table">Add task to the table</string>
+
+
+    <string name="update_task">Update</string>
+    <string name="delete_task">Delete</string>
+    <string name="alert_header">Alert!!</string>
+    <string name="ok">Ok</string>
+    <string name="log_out_msg">Log Out</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>

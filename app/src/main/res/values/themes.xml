@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.DemoApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.DemoApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -18,16 +18,62 @@
     //textView Style
 
     <style name="tvStyle" parent="Theme.AppCompat">
-        <item name="textColor">@color/tv_text_color</item>
+        <item name="textColor">@color/white</item>
     </style>
 
 
     //EditText Style
 
-    <style name="edStyle" parent="Theme.AppCompat">
+    <style name="edStyle">
+        <item name="android:textColor">@color/tv_text_color</item>
+        <item name="android:background">@drawable/shape_edittext</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">5dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="textColor">@color/black</item>
+    </style>
 
-        <item name="textColor">@color/tv_text_color</item>
 
+    //Button style
+
+    <style name="btnStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/shape_button_bg</item>
+        <item name="android:backgroundTint">@color/bg_color_button</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:elevation">5dp</item>
+    </style>
+
+    <style name="alertBtnStyle">
+
+        <item name="android:background">@drawable/shape_alert_button</item>
+        <item name="android:textColor">@color/white</item>
+
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:elevation">5dp</item>
+
+
+    </style>
+
+
+    //TextView After the button
+
+    <style name="textSuggestions">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    //log out
+
+
+    <style name="btnLogout">
+        <item name="android:textColor">#272B39</item>
+        <item name="android:background">@drawable/shape_logout_btn</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
 

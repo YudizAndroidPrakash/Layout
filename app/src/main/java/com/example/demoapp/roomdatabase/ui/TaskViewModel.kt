@@ -9,13 +9,16 @@ import kotlinx.coroutines.launch
 
 class TaskViewModel(application: Application) : AndroidViewModel(application) {
 
-    val allTask: LiveData<List<Task>>
     private val repository: TaskRepository
 
     init {
         val dao = AppRoomDatabase.getObject(application).taskDao()
         repository = TaskRepository(dao)
-        allTask = repository.allTask
+    }
+
+
+ fun allUserTask(userId: Long): LiveData<List<Task>> {
+        return repository.userTask(userId)
     }
 
     fun insertTask(task: Task) = viewModelScope.launch(Dispatchers.IO) {
@@ -25,4 +28,10 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteTask(task: Task) = viewModelScope.launch(Dispatchers.IO) {
         repository.deleteTask(task)
     }
+
+    fun updateTask(taskTitle :String,taskDescription : String,taskId : Long) = viewModelScope.launch(Dispatchers.IO) {
+        repository.updateTask(taskTitle,taskDescription,taskId)
+    }
+
+
 }

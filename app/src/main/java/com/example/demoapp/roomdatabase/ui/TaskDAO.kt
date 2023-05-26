@@ -15,7 +15,11 @@ interface TaskDAO  {
     @Delete
     suspend fun deleteTask(task: Task)
 
-    @Query("SELECT  * FROM task")
-    fun getAllTask() : LiveData<List<Task>>
+    @Query("UPDATE Task SET taskTitle=:taskTitle,taskDescription=:taskDescription WHERE taskId=:taskId")
+   suspend fun updateTask(taskTitle :String,taskDescription : String,taskId : Long)
+
+
+    @Query("SELECT * FROM Task where userID=:userId")
+    fun getAllTask(userId : Long) : LiveData<List<Task>>
 
 }

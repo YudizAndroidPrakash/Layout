@@ -8,35 +8,72 @@
     android:layout_height="match_parent"
     tools:context=".roomdatabase.ui.LoginActivity">
 
+
+    <TextView
+        android:id="@+id/tv_login_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="@string/log_in"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/et_lg_user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Email"
+        style="@style/edStyle"
+        android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="@id/tv_login_message"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_message"
+        android:autofillHints="emailAddress" />
+
     <EditText
         android:id="@+id/et_lg_user_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
+        style="@style/edStyle"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@id/et_lg_user_email"
-        app:layout_constraintTop_toBottomOf="@id/et_lg_user_email"
-        />
+        android:autofillHints="password"
+        app:layout_constraintStart_toStartOf="@id/tv_login_message"
+        app:layout_constraintTop_toBottomOf="@id/et_lg_user_email" />
 
     <Button
         android:id="@+id/btn_login_home"
+        style="@style/btnStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:backgroundTint="#454966"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/log_in"
         app:layout_constraintStart_toStartOf="@id/et_lg_user_pass"
-        app:layout_constraintTop_toBottomOf="@id/et_lg_user_pass"
-        />
+        app:layout_constraintTop_toBottomOf="@id/et_lg_user_pass" />
+
+    <TextView
+        android:id="@+id/tv_registration_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/create_an_account"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login_home" />
+
+    <TextView
+        android:id="@+id/tv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        style="@style/textSuggestions"
+        app:layout_constraintStart_toEndOf="@id/tv_registration_msg"
+        app:layout_constraintTop_toBottomOf="@id/btn_login_home" />
+
+
 
 
 

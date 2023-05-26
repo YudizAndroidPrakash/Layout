@@ -9,6 +9,4 @@ data class Task(
     val taskTitle : String,
     val taskDescription: String,
     val userID : Long
-){
-
-}
+)

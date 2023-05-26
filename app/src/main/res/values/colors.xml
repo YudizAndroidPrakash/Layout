@@ -23,5 +23,7 @@
 
     //room data base demo
     <color name="tv_text_color">#373B48</color>
+    <color name="bg_color_button">#272B38</color>
+
 
 </resources>

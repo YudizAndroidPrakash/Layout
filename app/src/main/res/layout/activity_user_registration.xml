@@ -5,87 +5,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
+    android:background="@color/hall_layout_background_color"
     tools:context=".roomdatabase.ui.UserRegistrationActivity">
 
+
     <TextView
-        android:id="@+id/tv_sign_up"
+        android:id="@+id/tv_sign_up_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="Sign Up"
+        android:layout_margin="10dp"
         android:gravity="center"
-        android:textSize="20sp"
+        android:text="@string/sign_up"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_user_name"
+        style="@style/edStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="name"
+        android:autofillHints="name"
+        android:hint="@string/enter_name"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintTop_toBottomOf="@id/tv_sign_up"
-        />
+        app:layout_constraintStart_toStartOf="@id/tv_sign_up_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_sign_up_title" />
+
     <EditText
         android:id="@+id/et_user_email"
+        style="@style/edStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
+        android:autofillHints="emailAddress"
+        android:hint="@string/enter_email"
+        android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@id/et_user_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_user_name"
-        />
+        app:layout_constraintTop_toBottomOf="@id/et_user_name" />
+
     <EditText
         android:id="@+id/et_user_mobile"
+        style="@style/edStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Mobile Number"
+        android:autofillHints="phone"
+        android:hint="@string/enter_mobile_number"
         android:inputType="phone"
         app:layout_constraintStart_toStartOf="@id/et_user_email"
-        app:layout_constraintTop_toBottomOf="@id/et_user_email"
-        />
+        app:layout_constraintTop_toBottomOf="@id/et_user_email" />
 
     <EditText
         android:id="@+id/et_user_password"
+        style="@style/edStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="password"
+        android:autofillHints="phone"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
         app:layout_constraintStart_toStartOf="@id/et_user_mobile"
-        app:layout_constraintTop_toBottomOf="@id/et_user_mobile"
-        />
+        app:layout_constraintTop_toBottomOf="@id/et_user_mobile" />
+
     <EditText
         android:id="@+id/et_user_conf_password"
+        style="@style/edStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="confirm password"
+        android:autofillHints="password"
+        android:hint="@string/confirm_password"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@id/et_user_mobile"
-        app:layout_constraintTop_toBottomOf="@id/et_user_password"
-        />
+        app:layout_constraintStart_toStartOf="@id/et_user_password"
+        app:layout_constraintTop_toBottomOf="@id/et_user_password" />
+
 
     <Button
         android:id="@+id/btn_save_user_data"
+        style="@style/btnStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="submit"
+        android:layout_margin="10dp"
+        android:text="@string/sign_up"
         app:layout_constraintStart_toStartOf="@id/et_user_conf_password"
-        app:layout_constraintTop_toBottomOf="@id/et_user_conf_password"
-        />
+        app:layout_constraintTop_toBottomOf="@id/et_user_conf_password" />
 
-    <Button
-        android:id="@+id/btn_login_screen"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_already_msg"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:layout_margin="10dp"
+        android:text="@string/already_have_account"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_save_user_data"
-        />
+        app:layout_constraintTop_toBottomOf="@id/btn_save_user_data" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        style="@style/textSuggestions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_in"
+        app:layout_constraintStart_toEndOf="@id/tv_already_msg"
+        app:layout_constraintTop_toBottomOf="@id/btn_save_user_data" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
