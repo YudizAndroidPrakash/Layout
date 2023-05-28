@@ -13,11 +13,9 @@
         android:id="@+id/tv_login_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
         android:text="@string/log_in"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        style="@style/HeaderTextView"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +24,7 @@
         android:id="@+id/et_lg_user_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
         app:layout_constraintStart_toStartOf="@id/tv_login_message"
@@ -37,14 +35,14 @@
         android:id="@+id/et_lg_user_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:hint="@string/enter_password"
         android:inputType="textPassword"
         android:autofillHints="password"
         app:layout_constraintStart_toStartOf="@id/tv_login_message"
         app:layout_constraintTop_toBottomOf="@id/et_lg_user_email" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login_home"
         style="@style/btnStyle"
         android:layout_width="match_parent"
@@ -72,11 +70,6 @@
         style="@style/textSuggestions"
         app:layout_constraintStart_toEndOf="@id/tv_registration_msg"
         app:layout_constraintTop_toBottomOf="@id/btn_login_home" />
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
-package com.example.demoapp.roomdatabase.ui
+package com.example.demoapp.roomdatabase.repository
 
 import androidx.lifecycle.LiveData
+import com.example.demoapp.roomdatabase.dao.UserRegistrationDAO
+import com.example.demoapp.roomdatabase.table.UserRegistration
 
 class UserRegistrationRepository(private val registratrionDao : UserRegistrationDAO) {
 

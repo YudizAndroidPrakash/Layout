@@ -1,8 +1,9 @@
-package com.example.demoapp.roomdatabase.ui
+package com.example.demoapp.roomdatabase.dao
 
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.example.demoapp.roomdatabase.table.UserRegistration
 
 @Dao
 interface UserRegistrationDAO {

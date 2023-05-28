@@ -8,10 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.animation.AnimationActivity
 import com.example.demoapp.multithreading.ThreadTaskActivity
-import com.example.demoapp.roomdatabase.ui.HomeActivity
-import com.example.demoapp.roomdatabase.ui.LoginActivity
-import com.example.demoapp.roomdatabase.ui.SplashScreenActivity
-import com.example.demoapp.roomdatabase.ui.UserRegistrationActivity
+import com.example.demoapp.roomdatabase.ui.LaunchScreenActivity
 import com.example.demoapp.workmanagerdemo.WorkManagerActivity
 import com.example.demoapp.savefile.SaveImageSecondActivity
 import com.google.android.material.color.DynamicColors
@@ -155,7 +152,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,ThreadTaskActivity::class.java))
         }
         findViewById<Button>(R.id.btn_room_database).setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this,LaunchScreenActivity::class.java))
         }
     }
 }

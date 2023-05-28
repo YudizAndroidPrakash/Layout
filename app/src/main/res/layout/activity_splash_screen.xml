@@ -4,14 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".roomdatabase.ui.SplashScreenActivity">
+    xmlns:tool="http://schemas.android.com/tools"
+    tools:context=".roomdatabase.ui.LaunchScreenActivity">
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:min="0"
+        android:max="100"
+        android:indeterminateOnly="false"
+        android:progress="60"
+        android:progressDrawable="@drawable/custom_progressbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_demo_name"/>
+
+        <TextView
+            android:id="@+id/tv_show_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tool:text="@string/progress_indicator"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_demo_name"
+            />
 
 
-    <pl.droidsonroids.gif.GifTextView
+
+    <TextView
+        android:id="@+id/tv_demo_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/loading_screen"
-        />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/room_data_base_demo"
+        android:textAllCaps="true"
+        android:textColor="@color/tv_text_color"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@id/pb_loading"/>
 
 
 

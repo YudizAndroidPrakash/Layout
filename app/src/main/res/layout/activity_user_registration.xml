@@ -24,7 +24,7 @@
 
     <EditText
         android:id="@+id/et_user_name"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="name"
@@ -35,7 +35,7 @@
 
     <EditText
         android:id="@+id/et_user_email"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="emailAddress"
@@ -46,7 +46,7 @@
 
     <EditText
         android:id="@+id/et_user_mobile"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="phone"
@@ -57,7 +57,7 @@
 
     <EditText
         android:id="@+id/et_user_password"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="phone"
@@ -68,7 +68,7 @@
 
     <EditText
         android:id="@+id/et_user_conf_password"
-        style="@style/edStyle"
+        style="@style/EditTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="password"
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@id/et_user_password" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_save_user_data"
         style="@style/btnStyle"
         android:layout_width="match_parent"

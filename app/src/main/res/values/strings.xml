@@ -40,19 +40,25 @@
     <string name="add_task">Task Details</string>
     <string name="add_task_to_table">Add Task To task Table</string>
     <string name="hello_msg">Hello</string>
-    <string name="log_out_text">Log out</string>
+    <string name="log_out_text">Logout</string>
     <string name="add_task_to_the_table">Add task to the table</string>
     <string name="submit_task">submit</string>
-    <string name="cancel_task">cancel</string>
+    <string name="cancel_task">Cancel</string>
 
     <string name="update_task">Update</string>
     <string name="delete_task">Delete</string>
     <string name="alert_header">Alert!!</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="log_out_msg">Log Out</string>
+
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="room_data_base_demo">Room data base demo</string>
+    <string name="progress_indicator">10%</string>
+
+
+    <string name="room_demo_name">Room Database</string>
 
 
 </resources>

@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <color name="hall_layout_background_color">#000000</color>
+    <color name="tv_text_color">#FFFFFF</color>
+    <color name="bg_color_button">#373B48</color>
+
+
+    <color name="et_bg_color">#373B48</color>
+    <color name="tv_signup">@color/white</color>
+</resources>

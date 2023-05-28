@@ -1,9 +1,10 @@
-package com.example.demoapp.roomdatabase.ui
+package com.example.demoapp.roomdatabase.repository
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.delay
+import com.example.demoapp.roomdatabase.dao.TaskDAO
+import com.example.demoapp.roomdatabase.table.Task
 
-class TaskRepository(private val taskDao :TaskDAO) {
+class TaskRepository(private val taskDao : TaskDAO) {
 
 
   fun userTask(userId : Long) : LiveData<List<Task>>{

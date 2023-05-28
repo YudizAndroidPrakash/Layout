@@ -1,6 +1,7 @@
 package com.example.demoapp.roomdatabase
 
 
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,7 +11,7 @@ import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoapp.R
-import com.example.demoapp.roomdatabase.ui.Task
+import com.example.demoapp.roomdatabase.table.Task
 
 
 class TaskAdapterRoomDatabase(val context: Context, private val listener : ITaskRVAdapater) : RecyclerView.Adapter<TaskAdapterRoomDatabase.ViewHolder>(){
@@ -43,6 +44,7 @@ class TaskAdapterRoomDatabase(val context: Context, private val listener : ITask
         holder.taskTitle.text = currentTask.taskTitle
         holder.taskDescription.text = currentTask.taskDescription
     }
+
     @SuppressLint("NotifyDataSetChanged")
     fun updateList(list : List<Task>){
         alltask.clear()

@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
@@ -18,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.demoapp.R
 import com.example.demoapp.roomdatabase.ITaskRVAdapater
 import com.example.demoapp.roomdatabase.TaskAdapterRoomDatabase
+import com.example.demoapp.roomdatabase.table.Task
+import com.example.demoapp.roomdatabase.viewmodel.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
@@ -27,6 +30,7 @@ class HomeActivity : AppCompatActivity(), ITaskRVAdapater {
     private lateinit var fbAddTask: FloatingActionButton
     private lateinit var btnLogout: Button
     private lateinit var getUserData: SharedPreferences
+    private lateinit var tvWelcomeMsg: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +40,7 @@ class HomeActivity : AppCompatActivity(), ITaskRVAdapater {
         btnLogout = findViewById(R.id.btn_logout)
 
         fbAddTask = findViewById(R.id.fb_add_task)
+        tvWelcomeMsg = findViewById(R.id.tv_welcome_msg)
 
         taskViewModel = ViewModelProvider(
             this,
@@ -48,37 +53,47 @@ class HomeActivity : AppCompatActivity(), ITaskRVAdapater {
         }
 
         btnLogout.setOnClickListener {
-            val dialog = Dialog(this)
-            dialog.setContentView(R.layout.custom_logout_button)
-            dialog.window!!.setLayout(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
 
-            dialog.findViewById<Button>(R.id.btn_confirm_logout).setOnClickListener {
+            val dialog = Dialog(this).apply {
+                setContentView(R.layout.custom_logout_button)
+                window!!.setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+                setCanceledOnTouchOutside(false)
+            }
+            dialog.create()
+            dialog.show()
+
+
+            val msg = dialog.findViewById<TextView>(R.id.tv_reconfirm)
+            msg.setText(R.string.are_you_sure_you_want_to_logout)
+
+            val bntLogout: TextView = dialog.findViewById(R.id.btn_confirm_logout)
+            bntLogout.setOnClickListener {
                 getUserData = getSharedPreferences("user_details", Context.MODE_PRIVATE)
-                val editor = getUserData.edit()
-                editor.clear().apply()
+                getUserData.edit().apply {
+                    clear()
+                    apply()
+                }
                 dialog.dismiss()
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
-
-
-            dialog.findViewById<Button>(R.id.btn_cancel_logout).setOnClickListener {
+            dialog.findViewById<TextView>(R.id.btn_cancel_logout).setOnClickListener {
                 dialog.dismiss()
             }
         }
 
-
-        val getUserData = getSharedPreferences("user_details", Context.MODE_PRIVATE)
+        getUserData = getSharedPreferences("user_details", Context.MODE_PRIVATE)
+        val msg = "Hello ${getUserData.getString("username", "")}"
+        tvWelcomeMsg.text = msg
         rvTask = findViewById(R.id.rv_list_task)
         val adapter = TaskAdapterRoomDatabase(this, this)
         rvTask.adapter = adapter
 
 
-        taskViewModel.allUserTask(getUserData.getLong("userid", 0L)).observe(this)
-        { list ->
+        taskViewModel.allUserTask(getUserData.getLong("userid", 0L)).observe(this) { list ->
             list?.let {
                 adapter.updateList(it)
             }
@@ -93,6 +108,7 @@ class HomeActivity : AppCompatActivity(), ITaskRVAdapater {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
+            setCanceledOnTouchOutside(false)
         }
         dialog.create()
         dialog.show()
@@ -119,23 +135,27 @@ class HomeActivity : AppCompatActivity(), ITaskRVAdapater {
         }
 
         updateButton.setOnClickListener {
-            taskViewModel.updateTask(
-                taskTitle.text.toString(),
-                taskDescription.text.toString(),
-                task.taskId.toLong()
-            )
-            dialog.dismiss()
-            Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+            if (isValidData(taskTitle, taskDescription)) {
+                taskViewModel.updateTask(
+                    taskTitle.text.toString(),
+                    taskDescription.text.toString(),
+                    task.taskId.toLong()
+                )
+                dialog.dismiss()
+                Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
     private fun addTaskAlertDialog() {
-        val dialog = Dialog(this)
-        dialog.setContentView(R.layout.custom_alert_dialog_room_database)
-        dialog.window!!.setLayout(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
+        val dialog = Dialog(this).apply {
+            setContentView(R.layout.custom_alert_dialog_room_database)
+            window!!.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            setCanceledOnTouchOutside(false)
+        }
         dialog.create()
         dialog.show()
         val taskHeader = dialog.findViewById<TextView>(R.id.tv_alert_dialog_title)
@@ -158,18 +178,71 @@ class HomeActivity : AppCompatActivity(), ITaskRVAdapater {
 
         alertSubmitButton.setOnClickListener {
             val getUserData = getSharedPreferences("user_details", Context.MODE_PRIVATE)
-            taskViewModel.insertTask(
-                Task(
-                    0,
-                    taskTitle.text.toString(),
-                    taskDescription.text.toString(),
-                    getUserData.getLong("userid", 0L)
+            if (isValidData(taskTitle, taskDescription)) {
+                taskViewModel.insertTask(
+                    Task(
+                        0,
+                        taskTitle.text.toString(),
+                        taskDescription.text.toString(),
+                        getUserData.getLong("userid", 0L)
+                    )
                 )
-            )
-            dialog.dismiss()
-            Toast.makeText(this, "Task Inserted Successfully", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+                Toast.makeText(this, "Task Inserted Successfully", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }
+
+    //validation data
+    private fun isValidData(taskTitle: EditText, taskDescription: EditText): Boolean {
+
+        if (taskTitle.text.toString().isEmpty() && taskDescription.text.toString().isEmpty()) {
+            alertError("Please Enter details")
+            taskTitle.requestFocus()
+        } else if (taskTitle.text.toString().isEmpty()) {
+            alertError("Please enter task title")
+            taskTitle.requestFocus()
+        } else if (taskTitle.text.toString().length < 3) {
+            alertError("task title must be more than 3 char..")
+            taskTitle.requestFocus()
+        } else if (taskDescription.text.toString().isEmpty()) {
+            alertError("Enter Task Description")
+            taskDescription.requestFocus()
+        } else if (taskDescription.text.toString().length < 10) {
+            alertError("Task Description must be more than 10 char...")
+            taskDescription.requestFocus()
+        } else {
+            return true
+        }
+        return false
+
+    }
+
+    //alert for the error
+    private fun alertError(msg: String) {
+        val dialog = Dialog(this)
+        dialog.apply {
+            setContentView(R.layout.custom_logout_button)
+            window!!.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            setCanceledOnTouchOutside(false)
+        }.create()
+        dialog.show()
+        val tvDescribe = dialog.findViewById<TextView>(R.id.tv_reconfirm)
+        tvDescribe.text = msg
+
+        dialog.findViewById<TextView>(R.id.btn_confirm_logout).visibility = View.GONE
+        val okButton = dialog.findViewById<TextView>(R.id.btn_cancel_logout)
+        okButton.setText(R.string.ok)
+        okButton.setOnClickListener {
+            dialog.dismiss()
+        }
+
+    }
+
 
 }

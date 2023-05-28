@@ -4,13 +4,15 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.demoapp.R
+import com.example.demoapp.roomdatabase.table.UserRegistration
+import com.example.demoapp.roomdatabase.viewmodel.UserRegistrationViewModel
 
 class UserRegistrationActivity : AppCompatActivity() {
     private lateinit var registrationViewModel: UserRegistrationViewModel
@@ -20,17 +22,17 @@ class UserRegistrationActivity : AppCompatActivity() {
     private lateinit var etUserPassword: EditText
     private lateinit var etUserConfirmPassword: EditText
     private lateinit var btnSubmitRegister: Button
-    private lateinit var tvSignIn : TextView
+    private lateinit var tvSignIn: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_registration)
 
-        etUserName = findViewById(R.id.et_user_name)
-        etUserEmail = findViewById(R.id.et_user_email)
-        etUserMobile = findViewById(R.id.et_user_mobile)
-        etUserPassword = findViewById(R.id.et_user_password)
-        etUserConfirmPassword = findViewById(R.id.et_user_conf_password)
+//        etUserName = findViewById(R.id.et_user_name)
+//        etUserEmail = findViewById(R.id.et_user_email)
+//        etUserMobile = findViewById(R.id.et_user_mobile)
+//        etUserPassword = findViewById(R.id.et_user_password)
+//        etUserConfirmPassword = findViewById(R.id.et_user_conf_password)
         btnSubmitRegister = findViewById(R.id.btn_save_user_data)
         tvSignIn = findViewById(R.id.tv_sign_in)
 
@@ -41,85 +43,106 @@ class UserRegistrationActivity : AppCompatActivity() {
 
 
         btnSubmitRegister.setOnClickListener {
-            if(validationData())  {
-                registrationViewModel.insertUser(
-                    UserRegistration(
-                        0,
-                        etUserName.text.toString(),
-                        etUserEmail.text.toString(),
-                        etUserMobile.text.toString().toLong(),
-                        etUserPassword.text.toString()
-                    )
-                )
-
-                startActivity(Intent(this,LoginActivity::class.java))
-                finish()
+            if (validationData()) {
+                alertForError("Account is created successfully!!", true)
             }
         }
         tvSignIn.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
     }
 
 
-
-    private fun validationData()  : Boolean{
+    private fun validationData(): Boolean {
         etUserName = findViewById(R.id.et_user_name)
         etUserEmail = findViewById(R.id.et_user_email)
         etUserMobile = findViewById(R.id.et_user_mobile)
         etUserPassword = findViewById(R.id.et_user_password)
         etUserConfirmPassword = findViewById(R.id.et_user_conf_password)
 
-        if(etUserName.text.isEmpty() && etUserEmail.text.isEmpty() && etUserMobile.text.isEmpty()
-            && etUserPassword.text.isEmpty() && etUserConfirmPassword.text.isEmpty()){
-//            alert("Please fill all Details....")
-            Toast.makeText(applicationContext, "Hello", Toast.LENGTH_SHORT).show()
-            
-        }else if(etUserName.text.isEmpty()) {
-            alert("Please fill all Details....")
-            etUserName.focusable
-        }else if(etUserEmail.text.isEmpty() || android.util.Patterns.EMAIL_ADDRESS.matcher(etUserEmail.text.toString()).matches()) {
-            alert("Please check your email....")
-            etUserEmail.focusable
-        }else if(etUserMobile.text.isEmpty() || etUserMobile.text.toString().length == 10 ) {
-            alert("Please check your mobile number....")
-            etUserMobile.focusable
-        }else if(etUserPassword.text.isEmpty() || etUserPassword.text.toString().length > 8) {
-            alert("password must be more than 8 character....")
-            etUserPassword.focusable
-        }else if(etUserConfirmPassword.text.isEmpty()) {
-            alert("confirm password and password must be same....")
-            etUserConfirmPassword.focusable
-        }else {
+        if (etUserName.text.isEmpty() && etUserEmail.text.isEmpty() && etUserMobile.text.isEmpty()
+            && etUserPassword.text.isEmpty() && etUserConfirmPassword.text.isEmpty()
+        ) {
+            alertForError("Please fill all Details....")
+            etUserName.requestFocus()
+//            Toast.makeText(applicationContext, "Hello", Toast.LENGTH_SHORT).show()
+
+        } else if (etUserName.text.isEmpty()) {
+            alertForError("Enter Your Name")
+            etUserName.requestFocus()
+        } else if (etUserName.text.toString().length < 3) {
+            Log.d("name", etUserName.text.toString().length.toString())
+            alertForError("Name Must be more than 3 character...")
+            etUserName.requestFocus()
+        } else if (etUserEmail.text.isEmpty()) {
+            alertForError("Enter your email....")
+            etUserEmail.requestFocus()
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(etUserEmail.text.toString())
+                .matches()
+        ) {
+            alertForError("Please check your email....")
+            etUserEmail.requestFocus()
+        } else if (etUserMobile.text.isEmpty()) {
+            alertForError("Please check your mobile number....")
+            etUserMobile.requestFocus()
+        } else if (etUserMobile.text.toString().length != 10) {
+            alertForError("Please check your mobile number....")
+            etUserMobile.requestFocus()
+        } else if (etUserPassword.text.isEmpty()) {
+            alertForError("Please Enter Password....")
+            etUserPassword.requestFocus()
+        } else if (etUserPassword.text.toString().length < 8) {
+            alertForError("Password must be more than 8 character")
+            etUserPassword.requestFocus()
+        } else if (etUserConfirmPassword.text.toString() != etUserPassword.text.toString()) {
+            Log.d("same", etUserConfirmPassword.text.equals(etUserPassword.text).toString())
+            alertForError("confirm password and password must be same....")
+            etUserConfirmPassword.requestFocus()
+        } else {
+
+            registrationViewModel.insertUser(
+                UserRegistration(
+                    0,
+                    etUserName.text.toString(),
+                    etUserEmail.text.toString(),
+                    etUserMobile.text.toString().toLong(),
+                    etUserPassword.text.toString()
+                )
+            )
             return true
         }
         return false
     }
 
-
-
-
-    private fun alert(msg: String) {
+    private fun alertForError(msg: String, status: Boolean = false) {
         val dialog = Dialog(this).apply {
             setContentView(R.layout.alert_all_field_required)
-            window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
+            window!!.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            setCanceledOnTouchOutside(false)
         }
         dialog.create()
         dialog.show()
-        dialog.findViewById<TextView>(R.id.tv_alert_dialog_title).text = msg
-        dialog.findViewById<Button>(R.id.btn_ok_msg).setOnClickListener {
-            dialog.dismiss()
+
+        val alertTitle: TextView = dialog.findViewById(R.id.tv_required_filed_msg)
+        alertTitle.text = msg
+        val okButton: Button = dialog.findViewById(R.id.btn_ok_msg)
+
+        okButton.setOnClickListener {
+            if (status) {
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            } else {
+                dialog.dismiss()
+
+            }
         }
 
     }
 
-
-
-
-
-
-
-
-
 }
+
+

@@ -23,5 +23,7 @@
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="room_data_base_demo">Room data base demo</string>
+    <string name="progress_indicator">10%</string>
 
 </resources>

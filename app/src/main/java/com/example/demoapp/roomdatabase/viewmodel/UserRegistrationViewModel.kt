@@ -1,9 +1,12 @@
-package com.example.demoapp.roomdatabase.ui
+package com.example.demoapp.roomdatabase.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.example.demoapp.roomdatabase.table.UserRegistration
+import com.example.demoapp.roomdatabase.AppRoomDatabase
+import com.example.demoapp.roomdatabase.repository.UserRegistrationRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
