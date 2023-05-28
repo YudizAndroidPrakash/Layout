@@ -7,9 +7,8 @@ import com.example.demoapp.roomdatabase.table.Task
 class TaskRepository(private val taskDao : TaskDAO) {
 
 
-  fun userTask(userId : Long) : LiveData<List<Task>>{
-        val allTask  : LiveData<List<Task>> =   taskDao.getAllTask(userId)
-        return  allTask
+    fun userTask(userId: Long): LiveData<List<Task>> {
+        return taskDao.getAllTask(userId)
     }
 
 

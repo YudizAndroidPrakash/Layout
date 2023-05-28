@@ -1,16 +1,14 @@
 package com.example.demoapp.roomdatabase.ui
 
-import android.annotation.SuppressLint
+
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.WindowManager
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.example.demoapp.R
-import org.w3c.dom.Text
 
 class LaunchScreenActivity : AppCompatActivity() {
     private lateinit var pbLoadingScreen: ProgressBar
@@ -29,17 +27,17 @@ class LaunchScreenActivity : AppCompatActivity() {
         tvShowProgress.text = i.toString()
         val handler = Handler()
 
-        Thread(Runnable {
+        Thread {
             while (i != 100) {
                 i += 10
-                handler.post (Runnable{
+                handler.post {
                     pbLoadingScreen.progress = i
                     tvShowProgress.text = i.toString()
-                })
+                }
 
                 try {
                     Thread.sleep(2000)
-                    if(i==100) {
+                    if (i == 100) {
                         if (values) {
                             startActivity(Intent(this, LoginActivity::class.java))
                             finish()
@@ -48,18 +46,16 @@ class LaunchScreenActivity : AppCompatActivity() {
                             finish()
                         }
                     }
-                }catch (e  : InterruptedException){
+                } catch (e: InterruptedException) {
                     e.message
                 }
             }
-        }).start()
+        }.start()
 
 
 
 
 
-//        Handler().postDelayed({
-//
-//        }, 10000)
+
     }
 }

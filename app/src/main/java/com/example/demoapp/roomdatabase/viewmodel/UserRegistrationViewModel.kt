@@ -2,7 +2,6 @@ package com.example.demoapp.roomdatabase.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.demoapp.roomdatabase.table.UserRegistration
 import com.example.demoapp.roomdatabase.AppRoomDatabase
@@ -11,8 +10,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class UserRegistrationViewModel(application: Application) : AndroidViewModel(application){
-    var repository : UserRegistrationRepository
-    var selectedData :  LiveData<List<UserRegistration>>?  = null
+  private  var repository : UserRegistrationRepository
+//    var selectedData :  LiveData<List<UserRegistration>>?  = null
 
 
     init{
@@ -24,15 +23,6 @@ class UserRegistrationViewModel(application: Application) : AndroidViewModel(app
         repository.insertUser(userRegistration)
     }
 
-//    fun getUserDetail(email : String,password : String) : LiveData<List<UserRegistration>>? {
-//
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.getTheUserDetail(email,password)
-//            selectedData = repository.selectedData!!
-//
-//        }
-//        return selectedData
-//    }
 
 
 

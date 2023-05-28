@@ -1,6 +1,6 @@
 package com.example.demoapp.roomdatabase.repository
 
-import androidx.lifecycle.LiveData
+
 import com.example.demoapp.roomdatabase.dao.UserRegistrationDAO
 import com.example.demoapp.roomdatabase.table.UserRegistration
 
@@ -15,7 +15,7 @@ class UserRegistrationRepository(private val registratrionDao : UserRegistration
 
     //get the user detail
 
-  var selectedData : LiveData<List<UserRegistration>>? = null
+//  var selectedData : LiveData<List<UserRegistration>>? = null
 
 //    fun getTheUserDetail(email : String,password : String){
 //        selectedData = registratrionDao.getUserDetail(email,password)
