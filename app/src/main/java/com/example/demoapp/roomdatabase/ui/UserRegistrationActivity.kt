@@ -16,6 +16,8 @@ import com.example.demoapp.roomdatabase.viewmodel.UserRegistrationViewModel
 
 class UserRegistrationActivity : AppCompatActivity() {
     private lateinit var registrationViewModel: UserRegistrationViewModel
+
+
     private lateinit var etUserName: EditText
     private lateinit var etUserEmail: EditText
     private lateinit var etUserMobile: EditText
@@ -60,7 +62,6 @@ class UserRegistrationActivity : AppCompatActivity() {
         etUserMobile = findViewById(R.id.et_user_mobile)
         etUserPassword = findViewById(R.id.et_user_password)
         etUserConfirmPassword = findViewById(R.id.et_user_conf_password)
-
         if (etUserName.text.isEmpty() && etUserEmail.text.isEmpty() && etUserMobile.text.isEmpty()
             && etUserPassword.text.isEmpty() && etUserConfirmPassword.text.isEmpty()
         ) {
@@ -100,7 +101,12 @@ class UserRegistrationActivity : AppCompatActivity() {
             alertForError("confirm password and password must be same....")
             etUserConfirmPassword.requestFocus()
         } else {
+//            val database : AppRoomDatabase = AppRoomDatabase.getObject(applicationContext)
+//            val data = database.userDao()
+//                .getUserDetail(etUserEmail.text.toString(), etUserPassword.text.toString())
 
+
+//            if(data.isEmpty()){
             registrationViewModel.insertUser(
                 UserRegistration(
                     0,
@@ -111,6 +117,9 @@ class UserRegistrationActivity : AppCompatActivity() {
                 )
             )
             return true
+//            }else {
+//                alertForError("Email is already in use")
+//            }
         }
         return false
     }

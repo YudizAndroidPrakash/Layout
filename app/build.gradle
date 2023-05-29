@@ -68,7 +68,14 @@ dependencies {
 
 
 
-    //gif dependency
+    //gif dependencies
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.10'
+
+
+    //gson dependencies
+
+    dependencies
+        implementation 'com.google.code.gson:gson:2.10.1'
+
 
 }

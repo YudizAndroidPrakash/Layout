@@ -20,6 +20,9 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".jsondemo.JsonDemoActivity"
+            android:exported="false" />
+        <activity
             android:name=".roomdatabase.ui.LaunchScreenActivity"
             android:exported="false" />
         <activity

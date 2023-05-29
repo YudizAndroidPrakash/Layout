@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.animation.AnimationActivity
+import com.example.demoapp.jsondemo.JsonDemoActivity
 import com.example.demoapp.multithreading.ThreadTaskActivity
 import com.example.demoapp.roomdatabase.ui.LaunchScreenActivity
 import com.example.demoapp.workmanagerdemo.WorkManagerActivity
@@ -154,5 +155,10 @@ class MainActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btn_room_database).setOnClickListener {
             startActivity(Intent(this,LaunchScreenActivity::class.java))
         }
+
+        findViewById<Button>(R.id.bnt_json_demo).setOnClickListener {
+            startActivity(Intent(this,JsonDemoActivity::class.java))
+        }
+
     }
 }
