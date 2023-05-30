@@ -180,4 +180,14 @@
         app:layout_constraintStart_toStartOf="@id/btnThreadDemo"
         app:layout_constraintTop_toBottomOf="@id/btnThreadDemo"/>
 
+
+    <Button
+        android:id="@+id/btn_map_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="map demo"
+        app:layout_constraintStart_toStartOf="@id/btn_room_database"
+        app:layout_constraintTop_toBottomOf="@id/btn_room_database"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

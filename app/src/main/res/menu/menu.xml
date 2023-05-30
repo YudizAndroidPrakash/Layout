@@ -11,4 +11,6 @@
     <item  android:title="Family"
         android:id="@+id/btnFamily"
         android:icon="@drawable/family_images"/>
+    <item android:id="map"
+        android:title="map"/>
 </menu>

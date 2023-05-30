@@ -30,8 +30,11 @@ class JsonDemoActivity : AppCompatActivity() {
         val addPost  =  Gson().fromJson(userPost,UserPost::class.java)
         System.out.println(addPost)
 
-        val tojson = Gson().toJson(post)
+        val tojson = Gson().toJson(addPost)
         System.out.println(tojson)
+
+
+
 
 
 
