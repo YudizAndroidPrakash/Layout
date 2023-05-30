@@ -1,7 +1,10 @@
 package com.example.demoapp.mapdemo
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,13 +17,19 @@ import com.google.android.gms.location.LocationServices
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.UiSettings
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 
+
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.Task
+import java.util.Locale
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -30,6 +39,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var fusedLocationProvideClient: FusedLocationProviderClient
 
     private lateinit var task: Task<Location>
+    private lateinit var marker: Marker
+    private lateinit var current: LatLng
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,16 +75,23 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             return
         }
 
+        fusedLocationProvideClient.lastLocation.addOnSuccessListener { location ->
+            if (location != null) {
+                currentLocation = location
 
-        task.addOnSuccessListener { p0 ->
-            if (p0 != null) {
-                currentLocation = p0
-                // Obtain the SupportMapFragment and get notified when the map is ready to be used.
                 val mapFragment =
                     supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
                 mapFragment.getMapAsync(this@MapsActivity)
+
             }
+
         }
+//        task.addOnSuccessListener { p0 ->
+//            if (p0 != null) {
+//                currentLocation = p0
+//                // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+//                     }
+//        }
 //        task.addOnCompleteListener {task ->
 //            if(task.isSuccessful && task.result != null){
 //
@@ -86,12 +104,40 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
+    @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
 //        task  =fusedLocationProvideClient.lastLocation
         mMap = googleMap
+        mMap.uiSettings.isZoomControlsEnabled = true
+//        mMap.uiSettings.isMyLocationButtonEnabled = true
+
+        mMap.isMyLocationEnabled = true
+
+
         // Add a marker in Sydney and move the camera
-        val current = LatLng(currentLocation.latitude, currentLocation.longitude)
-        mMap.addMarker(MarkerOptions().position(current).title("Current Location"))
+//        val icon = BitmapDescriptorFactory.fromResource(R.drawable.ic_location)
+
+        current = LatLng(currentLocation.latitude, currentLocation.longitude)
+        mMap.setOnMapClickListener {
+            val myLocation = LatLng(it.latitude,it.longitude)
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
+        }
+        val geocoder = Geocoder(this, Locale.getDefault())
+
+
+        val list: MutableList<Address> =
+            geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)!!
+//        mMap.addMarker(MarkerOptions().position(current).title("Current Location"))
+
+
+        marker = mMap.addMarker(
+            MarkerOptions()
+                .position(current)
+                .title("Current Location")
+                .snippet("${list[0].getAddressLine(0)},${list[0].locality},${list[0].countryName},${list[0].postalCode}")
+        )!!
+        marker.showInfoWindow()
+
         mMap.moveCamera(CameraUpdateFactory.newLatLng(current))
     }
 
@@ -107,5 +153,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             Toast.makeText(this, "Permission not granted", Toast.LENGTH_SHORT).show()
         }
     }
+
 
 }
