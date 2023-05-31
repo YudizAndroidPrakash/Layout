@@ -31,4 +31,9 @@
 
     <color name="tv_signup">@color/black</color>
 
+
+
+    <color name="cell_bg_color">#4D4d4D</color>
+    <color name="cp_bg_color">#00CED1</color>
+
 </resources>

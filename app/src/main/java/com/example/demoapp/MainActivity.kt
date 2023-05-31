@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.demoapp.animation.AnimationActivity
 import com.example.demoapp.jsondemo.JsonDemoActivity
+import com.example.demoapp.jsondemo.ListOfProductsActivity
 import com.example.demoapp.mapdemo.MapsActivity
 import com.example.demoapp.multithreading.ThreadTaskActivity
 import com.example.demoapp.roomdatabase.ui.LaunchScreenActivity
@@ -162,6 +163,11 @@ class MainActivity : AppCompatActivity() {
         }
         findViewById<Button>(R.id.btn_map_demo).setOnClickListener {
             startActivity(Intent(this,MapsActivity::class.java))
+        }
+
+
+        findViewById<Button>(R.id.btn_json_demo).setOnClickListener {
+            startActivity(Intent(this,ListOfProductsActivity::class.java))
         }
 
     }

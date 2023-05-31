@@ -8,6 +8,9 @@ import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -32,7 +35,7 @@ import com.google.android.gms.tasks.Task
 import java.util.Locale
 
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(){
 
     private lateinit var mMap: GoogleMap
     private lateinit var currentLocation: Location
@@ -46,7 +49,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
-
         fusedLocationProvideClient = LocationServices.getFusedLocationProviderClient(this)
 
         getLastLocation()
@@ -59,15 +61,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         if (ActivityCompat.checkSelfPermission(
                 this, Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-            && ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this, Manifest.permission.ACCESS_COARSE_LOCATION
             ) != PackageManager.PERMISSION_GRANTED
         ) {
             ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
+                this, arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.ACCESS_COARSE_LOCATION
                 ), 1
@@ -81,7 +80,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 val mapFragment =
                     supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-                mapFragment.getMapAsync(this@MapsActivity)
+                mapFragment.getMapAsync { googleMap ->
+                    mMap = googleMap
+
+                    //        task  =fusedLocationProvideClient.lastLocation
+
+                    Toast.makeText(this@MapsActivity, "map is ready", Toast.LENGTH_SHORT).show()
+                    mMap.uiSettings.isZoomControlsEnabled = true
+                    mMap.uiSettings.isMyLocationButtonEnabled = true
+                    mMap.isMyLocationEnabled = true
+
+
+                    // Add a marker in Current Location Move
+                    current = LatLng(currentLocation.latitude, currentLocation.longitude)
+                    mMap.setOnMapClickListener {
+                        val myLocation = LatLng(it.latitude, it.longitude)
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
+                    }
+                    val geocoder = Geocoder(this@MapsActivity, Locale.getDefault())
+
+
+                    val list: MutableList<Address> =
+                        geocoder.getFromLocation(
+                            currentLocation.latitude,
+                            currentLocation.longitude,
+                            1
+                        )!!
+                    //        mMap.addMarker(MarkerOptions().position(current).title("Current Location"))
+
+
+                    marker = mMap.addMarker(
+                        MarkerOptions().position(current).title("Current Location")
+                            .snippet("${list[0].getAddressLine(0)},${list[0].locality},${list[0].countryName},${list[0].postalCode}")
+                    )!!
+                    marker.showInfoWindow()
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(current))
+                }
 
             }
 
@@ -104,47 +139,43 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    @SuppressLint("MissingPermission")
-    override fun onMapReady(googleMap: GoogleMap) {
-//        task  =fusedLocationProvideClient.lastLocation
-        mMap = googleMap
-        mMap.uiSettings.isZoomControlsEnabled = true
-//        mMap.uiSettings.isMyLocationButtonEnabled = true
-
-        mMap.isMyLocationEnabled = true
-
-
-        // Add a marker in Sydney and move the camera
-//        val icon = BitmapDescriptorFactory.fromResource(R.drawable.ic_location)
-
-        current = LatLng(currentLocation.latitude, currentLocation.longitude)
-        mMap.setOnMapClickListener {
-            val myLocation = LatLng(it.latitude,it.longitude)
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
-        }
-        val geocoder = Geocoder(this, Locale.getDefault())
-
-
-        val list: MutableList<Address> =
-            geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)!!
-//        mMap.addMarker(MarkerOptions().position(current).title("Current Location"))
-
-
-        marker = mMap.addMarker(
-            MarkerOptions()
-                .position(current)
-                .title("Current Location")
-                .snippet("${list[0].getAddressLine(0)},${list[0].locality},${list[0].countryName},${list[0].postalCode}")
-        )!!
-        marker.showInfoWindow()
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(current))
-    }
+//    override fun onMapReady(googleMap: GoogleMap) {
+////        task  =fusedLocationProvideClient.lastLocation
+//        mMap = googleMap
+//        Toast.makeText(this, "map is ready", Toast.LENGTH_SHORT).show()
+//        mMap.uiSettings.isZoomControlsEnabled = true
+////        mMap.uiSettings.isMyLocationButtonEnabled = true
+//
+//        mMap.isMyLocationEnabled = true
+//
+//
+//        // Add a marker in Sydney and move the camera
+////        val icon = BitmapDescriptorFactory.fromResource(R.drawable.ic_location)
+//
+//        current = LatLng(currentLocation.latitude, currentLocation.longitude)
+//        mMap.setOnMapClickListener {
+//            val myLocation = LatLng(it.latitude, it.longitude)
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
+//        }
+//        val geocoder = Geocoder(this, Locale.getDefault())
+//
+//
+//        val list: MutableList<Address> =
+//            geocoder.getFromLocation(currentLocation.latitude, currentLocation.longitude, 1)!!
+////        mMap.addMarker(MarkerOptions().position(current).title("Current Location"))
+//
+//
+//        marker = mMap.addMarker(
+//            MarkerOptions().position(current).title("Current Location")
+//                .snippet("${list[0].getAddressLine(0)},${list[0].locality},${list[0].countryName},${list[0].postalCode}")
+//        )!!
+//        marker.showInfoWindow()
+//
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(current))
+//    }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -155,4 +186,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.map_type,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        mMap.mapType = item.itemId
+       return  true
+    }
 }

@@ -11,15 +11,32 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         tools:context=".mapdemo.MapsActivity"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="700dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-<!--    <CheckBox-->
-<!--        android:id="@+id/cb_zoomin_zoomout"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="parent"-->
-<!--        />-->
+    <CheckBox
+        android:id="@+id/cb_zoomin_zoomout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/zoom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map"
+        />
+    <CheckBox
+        android:id="@+id/cb_move_current_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="current location"
+        app:layout_constraintStart_toEndOf="@id/cb_zoomin_zoomout"
+        app:layout_constraintTop_toBottomOf="@id/map"
+        />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
