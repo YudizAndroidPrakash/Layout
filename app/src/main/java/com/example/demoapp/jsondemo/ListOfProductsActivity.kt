@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoapp.R
@@ -14,10 +16,13 @@ class ListOfProductsActivity : AppCompatActivity(), IProductsRVAdapter {
     private lateinit var rvProductsData: RecyclerView
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_of_products)
 
+
+        val pbImageLoading : ProgressBar = findViewById(R.id.pb_product_data_loading)
         val retrofit = Retrofit.Builder().baseUrl("https://dummyjson.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -33,6 +38,7 @@ class ListOfProductsActivity : AppCompatActivity(), IProductsRVAdapter {
                     Toast.makeText(this@ListOfProductsActivity, "check your internet connection", Toast.LENGTH_SHORT).show()
                     return
                 }
+                pbImageLoading.visibility = View.GONE
                 val body = response.body()!!.products
                 System.out.println(body)
                 val adapter = AdapterProductsData(this@ListOfProductsActivity, body!!, this@ListOfProductsActivity)
