@@ -97,7 +97,7 @@
         />
 
 
-    <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_products_images"
         android:layout_width="wrap_content"
         android:layout_height="500dp"

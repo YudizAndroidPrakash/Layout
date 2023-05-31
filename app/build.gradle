@@ -99,9 +99,12 @@ dependencies {
 
     //picasso dependencies
 
-    implementation 'com.squareup.picasso:picasso:2.8'
-
+//    implementation 'com.squareup.picasso:picasso:2.8'
+        implementation 'com.squareup.picasso:picasso:2.8'
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+
+    //view pager gradle
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
 
 
