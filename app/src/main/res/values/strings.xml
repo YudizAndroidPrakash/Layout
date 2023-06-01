@@ -60,6 +60,7 @@
 
     <string name="room_demo_name">Room Database</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="default_notification_channel_id">notification_demo</string>
 
 
 </resources>

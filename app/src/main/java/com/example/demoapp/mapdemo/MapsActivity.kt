@@ -1,11 +1,11 @@
 package com.example.demoapp.mapdemo
 
+
 import android.Manifest
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
-import android.os.Build.VERSION_CODES.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -15,6 +15,7 @@ import android.widget.CheckBox
 
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.example.demoapp.R
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
@@ -28,6 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment
 
 
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import java.util.Locale
 
@@ -39,7 +41,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener
     private lateinit var fusedLocationProvideClient: FusedLocationProviderClient
     private lateinit var cbZoom: CheckBox
     private lateinit var cbCurrentLocation: CheckBox
-    private lateinit var marker: MarkerOptions
+    private lateinit var marker: Marker
 
 
 //    private lateinit var task: Task<Location>
@@ -49,8 +51,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
         cbZoom = findViewById(R.id.cb_zoomin_zoomout)
         cbCurrentLocation = findViewById(R.id.cb_move_current_location)
+
 
 //        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
 //
@@ -59,14 +63,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener
 //
 //        getLastLocation()
         userCurrentLocation()
-        cbZoom.setOnCheckedChangeListener { _, isChecked ->
-            mMap.uiSettings.isZoomControlsEnabled = isChecked
-            Toast.makeText(this, "$isChecked", Toast.LENGTH_SHORT).show()
-        }
-        cbCurrentLocation.setOnCheckedChangeListener { _, isChecked ->
-            mMap.uiSettings.isMyLocationButtonEnabled = isChecked
-            Toast.makeText(this, "${isChecked}", Toast.LENGTH_SHORT).show()
-        }
+
 
     }
 
@@ -108,14 +105,29 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener
     }
 
     override fun onMapReady(p0: GoogleMap) {
+        mMap = p0
         val updateCurrentLocation = LatLng(currentLocation.latitude, currentLocation.longitude)
-        setMarker(updateCurrentLocation)
-//        val userCurrentLocation = LatLng(currentLocation.latitude, currentLocation.longitude)
-//        marker = MarkerOptions().position(userCurrentLocation).title("Current Location")
-//
-//        mMap.animateCamera(CameraUpdateFactory.newLatLng(userCurrentLocation))
-//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocation, 10f))
-//        mMap.addMarker(marker)
+//        setMarker(updateCurrentLocation)
+        val userCurrentLocation = LatLng(updateCurrentLocation.latitude, updateCurrentLocation.longitude)
+        mMap.uiSettings.isMyLocationButtonEnabled = true
+//        mMap.uiSettings.
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLng(userCurrentLocation))
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userCurrentLocation, 10f))
+        mMap.addMarker(MarkerOptions().position(userCurrentLocation).title("Current Location"))
+
+        checkBoxBehaviour(mMap)
+    }
+    private fun checkBoxBehaviour(googleMap : GoogleMap){
+                cbZoom.setOnCheckedChangeListener { _, isChecked ->
+                    googleMap.uiSettings.isZoomControlsEnabled = isChecked
+            Toast.makeText(this, "$isChecked", Toast.LENGTH_SHORT).show()
+        }
+        cbCurrentLocation.setOnCheckedChangeListener { _, isChecked ->
+            googleMap.uiSettings.isMyLocationButtonEnabled = isChecked
+            googleMap.uiSettings.isMyLocationButtonEnabled
+            Toast.makeText(this, "$isChecked", Toast.LENGTH_SHORT).show()
+        }
     }
 
 
@@ -208,6 +220,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener
 //            val myLocation = LatLng(it.latitude, it.longitude)
 //            mMap.moveCamera(CameraUpdateFactory.newLatLng(myLocation))
 //        }
+
 //        val geocoder = Geocoder(this, Locale.getDefault())
 //
 //
@@ -274,15 +287,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMapClickListener
     }
 
     private fun setMarker(latLng: LatLng) {
+        marker.remove()
         val geocoder = Geocoder(this, Locale.getDefault())
-
         val list: MutableList<Address> =
             geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1)!!
-        marker = MarkerOptions().position(latLng).title("current location")
-            .snippet("${list[0].getAddressLine(0)},${list[0].locality},${list[0].countryName},${list[0].postalCode}")
+        marker = mMap.addMarker(MarkerOptions().position(latLng).title("current location").snippet("${list[0].getAddressLine(0)},${list[0].locality},${list[0].countryName},${list[0].postalCode}"))!!
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
-        mMap.addMarker(marker)
+
     }
 
 

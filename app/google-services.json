@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1067488897424",
+    "project_id": "fcm-demo-push-notificaiton",
+    "storage_bucket": "fcm-demo-push-notificaiton.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067488897424:android:2f4a98ce32557b6dc1eb15",
+        "android_client_info": {
+          "package_name": "com.example.demoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrsbF-NKwnsO4bJDP_e7KboV0vSiOKPFU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

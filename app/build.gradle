@@ -7,9 +7,11 @@ plugins {
     // ...
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
 
+    //fcm
+
 
 }
-
+apply plugin :'com.google.gms.google-services'
 android {
     namespace 'com.example.demoapp'
     compileSdk 33
@@ -106,8 +108,9 @@ dependencies {
     //view pager gradle
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
 
+    implementation platform('com.google.firebase:firebase-bom:32.1.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
-
-
+    implementation 'com.google.firebase:firebase-messaging:23.1.2'
 
 }

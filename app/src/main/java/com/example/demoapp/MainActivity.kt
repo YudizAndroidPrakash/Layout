@@ -11,6 +11,7 @@ import com.example.demoapp.jsondemo.JsonDemoActivity
 import com.example.demoapp.jsondemo.ListOfProductsActivity
 import com.example.demoapp.mapdemo.MapsActivity
 import com.example.demoapp.multithreading.ThreadTaskActivity
+import com.example.demoapp.pushnotificaitondemo.PushNotificationDemoMainActivity
 import com.example.demoapp.roomdatabase.ui.LaunchScreenActivity
 import com.example.demoapp.workmanagerdemo.WorkManagerActivity
 import com.example.demoapp.savefile.SaveImageSecondActivity
@@ -35,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var btnSaveImageToDevice : Button
     private  lateinit var  btnAnimation : Button
     private  lateinit var btnThread : Button
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -168,6 +170,11 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_json_demo).setOnClickListener {
             startActivity(Intent(this,ListOfProductsActivity::class.java))
+        }
+
+        findViewById<Button>(R.id.btn_push_notificaiton_demo).setOnClickListener {
+            startActivity(Intent(this,PushNotificationDemoMainActivity::class.java))
+
         }
 
     }

@@ -148,7 +148,7 @@ class NotificationActivity : AppCompatActivity() {
             }
             notificationManager.createNotificationChannel(channel)
         } else {
-            builder = NotificationCompat.Builder(this, channelIDNormalNot)
+            builder = NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Alert")
                 .setContentText("Hello how are You ?")
