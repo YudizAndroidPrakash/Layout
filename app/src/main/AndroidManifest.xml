@@ -36,9 +36,8 @@
         <activity
             android:name=".pushnotificaitondemo.PushNotificationDemoMainActivity"
             android:exported="false" />
-        <activity
-            android:name=".jsondemo.ProductDetailActivity"
-            android:exported="false" />
+        <activity android:name=".jsondemo.ProductDetailActivity"
+            android:exported="false"/>
         <activity
             android:name=".jsondemo.ListOfProductsActivity"
             android:exported="false" />
