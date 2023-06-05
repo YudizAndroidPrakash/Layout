@@ -9,6 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
 import com.example.demoapp.R
+import com.example.demoapp.databinding.ActivityListOfProductsBinding
 import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
@@ -18,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ProductDetailActivity : AppCompatActivity() {
-    //    private lateinit var binding: ActivityProductDetailBinding
+        private lateinit var binding: ActivityListOfProductsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_detail)

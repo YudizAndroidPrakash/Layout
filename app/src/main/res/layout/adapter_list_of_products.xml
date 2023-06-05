@@ -19,7 +19,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="10dp"
-        android:layout_margin="10dp">
+        android:layout_margin="10dp"
+        android:onClick="@{}"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -60,13 +62,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
-                tool:text="Price"
-                android:text="@{data.price}"
+                android:text="@{Integer.toString(data.price)}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_product_description"
                 app:layout_constraintStart_toEndOf="@id/img_product_thumbnail"
                 app:layout_constraintTop_toBottomOf="@+id/tv_product_title"
-
-
                 />
 
             <TextView
@@ -76,7 +75,7 @@
                 android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 tool:text="Description"
-                android:text="@{data.description}"
+                android:text="@{data.category}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_product_price"
                 app:layout_constraintStart_toEndOf="@id/img_product_thumbnail"
                 app:layout_constraintTop_toBottomOf="@+id/tv_product_price" />
