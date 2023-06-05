@@ -22,6 +22,7 @@ class AdapterImageViewpager(val context: Context, private val imageList: List<St
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val mLayoutInflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+
         val itemView: View =
             mLayoutInflater.inflate(R.layout.image_slider_item_products, container, false)
 
