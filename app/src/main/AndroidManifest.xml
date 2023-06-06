@@ -25,6 +25,9 @@
         android:theme="@style/Theme.DemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".viewmodlelivedataflow.HostActivity"
+            android:exported="false" />
+        <activity
             android:name=".pushnotificaitondemo.BigDealActivity"
             android:exported="false" />
         <activity
@@ -36,8 +39,9 @@
         <activity
             android:name=".pushnotificaitondemo.PushNotificationDemoMainActivity"
             android:exported="false" />
-        <activity android:name=".jsondemo.ProductDetailActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".jsondemo.ProductDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".jsondemo.ListOfProductsActivity"
             android:exported="false" />

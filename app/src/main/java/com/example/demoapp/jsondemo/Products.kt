@@ -1,5 +1,9 @@
 package com.example.demoapp.jsondemo
 
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.example.demoapp.R
+import com.squareup.picasso.Picasso
 import java.io.Serializable
 
 data class Products(
@@ -15,5 +19,6 @@ data class Products(
     val thumbnail: String,
     val images: List<String>
 ) : Serializable
+
 
 

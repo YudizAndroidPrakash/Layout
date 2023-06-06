@@ -10,47 +10,50 @@
         <variable
             name="productDetail"
             type="com.example.demoapp.jsondemo.Products" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="30dp"
         tools:context=".jsondemo.ProductDetailActivity">
-
-        <ImageView
-            android:id="@+id/imv_thumbnail_data"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/imgavatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/tv_product_title_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{productDetail.title}"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_product_discount_details"
-            app:layout_constraintEnd_toStartOf="@id/tv_product_price_details"
-            app:layout_constraintHorizontal_bias="0.5"
+            tool:text="Title"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imv_thumbnail_data" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <ImageView
+            android:id="@+id/img_thumbnail_data"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/imgavatar"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_title_details"/>
+
+
 
         <TextView
             android:id="@+id/tv_product_price_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{Integer.toString(productDetail.price)}"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_product_title_details"
-            app:layout_constraintTop_toBottomOf="@id/imv_thumbnail_data" />
+            tool:text="Price"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_thumbnail_data"
+            />
 
 
         <TextView
@@ -58,69 +61,69 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{Float.toString(productDetail.discountPercentage)}"
+
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_product_stock_details"
-            app:layout_constraintEnd_toStartOf="@id/tv_product_rating_details"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_product_title_details" />
+            app:layout_constraintTop_toBottomOf="@id/tv_product_price_details"
+            />
 
         <TextView
             android:id="@+id/tv_product_rating_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{Float.toString(productDetail.rating)}"
+
             android:textStyle="bold"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_product_discount_details"
-            app:layout_constraintTop_toBottomOf="@id/tv_product_price_details" />
+            app:layout_constraintTop_toBottomOf="@id/img_thumbnail_data"
+            />
 
         <TextView
             android:id="@+id/tv_product_stock_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{Integer.toString(productDetail.stock)}"
+
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/tv_product_description_details"
-            app:layout_constraintEnd_toStartOf="@id/tv_product_brand_details"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_product_discount_details" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_rating_details"
+            />
 
         <TextView
             android:id="@+id/tv_product_brand_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{productDetail.brand}"
+
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tv_product_stock_details"
-            app:layout_constraintTop_toBottomOf="@id/tv_product_rating_details" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_stock_details"
+            />
 
         <TextView
             android:id="@+id/tv_product_description_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{productDetail.description}"
+
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/vp_products_images"
-            app:layout_constraintStart_toStartOf="@id/tv_product_stock_details"
-            app:layout_constraintTop_toBottomOf="@+id/tv_product_stock_details" />
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_brand_details"/>
 
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_products_images"
-            android:layout_width="wrap_content"
-            android:layout_height="500dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_product_description_details" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

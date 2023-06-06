@@ -134,15 +134,14 @@ class AdapterProductsData(
 //        Picasso.get().load(productListDData.thumbnail).placeholder(R.drawable.imgavatar).into(holder.binding.imgProductThumbnail)
 
         holder.binding.data = productList[position]
-
-        holder.bind(position,onClick)
+        holder.onBind(position,onClick)
     }
     inner class ViewHolder(val binding: AdapterListOfProductsBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(position: Int,onClick: (lst: Products) -> Unit){
+
+        fun onBind(position: Int,onClick: (lst: Products) -> Unit){
             binding.root.setOnClickListener {
                 onClick(productList[position])
             }
-
         }
     }
 

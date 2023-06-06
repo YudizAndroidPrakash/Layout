@@ -53,6 +53,8 @@ class ListOfProductsActivity : AppCompatActivity() {
                 //use binding
                 binding.pbProductDataLoading.visibility = View.GONE
                 val body = response.body()!!.products
+
+
                 System.out.println(body)
                 val adapter = AdapterProductsData(
                     this@ListOfProductsActivity,
