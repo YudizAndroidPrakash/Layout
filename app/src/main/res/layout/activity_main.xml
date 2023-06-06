@@ -207,6 +207,16 @@
         app:layout_constraintTop_toBottomOf="@id/btn_map_demo"/>
 
 
+    <Button
+        android:id="@+id/btn_view_model_demo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ViewModel"
+        app:layout_constraintStart_toStartOf="@id/btn_json_demo"
+        app:layout_constraintTop_toBottomOf="@id/btn_json_demo"
+        />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

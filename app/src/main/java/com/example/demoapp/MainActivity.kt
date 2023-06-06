@@ -19,6 +19,7 @@ import com.example.demoapp.pushnotificaitondemo.SpecialOfferActivity
 import com.example.demoapp.roomdatabase.ui.LaunchScreenActivity
 import com.example.demoapp.workmanagerdemo.WorkManagerActivity
 import com.example.demoapp.savefile.SaveImageSecondActivity
+import com.example.demoapp.viewmodlelivedataflow.HostActivity
 import com.google.android.material.color.DynamicColors
 
 class MainActivity : AppCompatActivity() {
@@ -212,6 +213,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, PushNotificationDemoMainActivity::class.java))
 
         }
+
+        findViewById<Button>(R.id.btn_view_model_demo).setOnClickListener {
+            startActivity(Intent(this,HostActivity::class.java))
+        }
+
 
     }
 }
