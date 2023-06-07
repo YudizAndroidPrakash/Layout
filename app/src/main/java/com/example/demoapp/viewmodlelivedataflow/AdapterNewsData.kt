@@ -9,11 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demoapp.R
 import com.example.demoapp.databinding.NewsItemAdapaterBinding
+import com.example.demoapp.viewmodlelivedataflow.model.Article
 import com.squareup.picasso.Picasso
 import retrofit2.http.Url
 
-class AdapterNewsData(val context: Context) : RecyclerView.Adapter<AdapterNewsData.ViewHolder>() {
-    var newsList : List<Articles> = listOf()
+class AdapterNewsData(val context: Context,val newsList : ArrayList<Article>) : RecyclerView.Adapter<AdapterNewsData.ViewHolder>() {
+
+
+//    lateinit var binding : NewsItemAdapaterBinding
     class ViewHolder(val view: NewsItemAdapaterBinding) : RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(
@@ -28,7 +31,7 @@ class AdapterNewsData(val context: Context) : RecyclerView.Adapter<AdapterNewsDa
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        holder.view.tvNewsName.text = newsList[position].source.name
            holder.view.newsData = newsList[position]
-            holder.view.newThumbnail = newsList[position].urlToImage
+
     }
 
     override fun getItemCount(): Int  = newsList.size
@@ -37,7 +40,3 @@ class AdapterNewsData(val context: Context) : RecyclerView.Adapter<AdapterNewsDa
 }
 
 
-@BindingAdapter("newsImage")
-fun newsImageThumbnail(imageView: ImageView,imageUrl :String){
-       Picasso.get().load(imageUrl).into(imageView)
-}

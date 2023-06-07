@@ -6,11 +6,7 @@
     <data>
         <variable
             name="newsData"
-            type="com.example.demoapp.viewmodlelivedataflow.Articles" />
-        <variable
-            name="newThumbnail"
-            type="String" />
-
+            type="com.example.demoapp.viewmodlelivedataflow.model.Article" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,7 +24,8 @@
                 android:id="@+id/img_news_thumbnail"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@{newThumbnail}"
+                android:src="@drawable/imgavatar"
+                app:newsImage="@{newsData.urlToImage}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -37,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tool:text="News Name"
-                android:text="@{newsData.source.name}"
+                android:text="@{newsData.author}"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
@@ -50,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:textStyle="bold"
-                tool:text="News Title"
-                android:text="@{newsData.title}"
+                tool:text="@{newsData.title}"
+                android:text="title"
                 android:textSize="10sp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintStart_toEndOf="@id/img_news_thumbnail"

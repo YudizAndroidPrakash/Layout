@@ -15,9 +15,17 @@ import androidx.lifecycle.viewModelScope
 import com.example.demoapp.R
 import com.example.demoapp.databinding.FragmentAddUserInformationBinding
 import com.example.demoapp.databinding.FragmentUserInformationBinding
+import com.example.demoapp.viewmodlelivedataflow.api.NewsHelper
+import com.example.demoapp.viewmodlelivedataflow.api.NewsServiceProvider
+import com.example.demoapp.viewmodlelivedataflow.model.UserInformationModel
+import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModel
+import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModelFactory
+import com.example.demoapp.viewmodlelivedataflow.repository.NewsArticleRepository
 import kotlinx.coroutines.launch
 
 class AddUserInformationFragment : Fragment() {
+    private lateinit var    mainViewModel: MainViewModel
+
 //    private val shareViewModel by lazy {
 //        ViewModelProvider(
 //            requireActivity(),
@@ -48,28 +56,27 @@ class AddUserInformationFragment : Fragment() {
             container,
             false
         )
-//        val retrofitService = NewsService.getInstance()
-//        val myRepository = UserInformationRepository(retrofitService)
-//        val shareViewModelRetro = ViewModelProvider(this,MyViewModelFactory(myRepository))[SharedVM::class.java]
-        val shareViewModel = ViewModelProvider(requireActivity())[ShareViewModel::class.java]
+        val newsService = NewsHelper.getInstance().create(NewsServiceProvider::class.java)
+        val repository = NewsArticleRepository(newsService)
+        mainViewModel = ViewModelProvider(requireActivity(),
+            MainViewModelFactory(repository)
+        )[MainViewModel::class.java]
 
 
-            shareViewModel.userData.observe(requireActivity()) {
+            mainViewModel.userData.observe(requireActivity()) {
                 binding.etUserName.setText(it.userName)
                 binding.etUserEmail.setText(it.userEmail)
                 binding.etUserAddress.setText(it.userAddress)
                 binding.etUserMobileNumber.setText(it.userMobile)
                 binding.etUserNewsTopic.setText(it.topic)
-
-
             }
 
 
 binding.btnSaveUserInformation.setOnClickListener {
 
 
-        shareViewModel.insertUserInformation(
-            UserInformation(
+        mainViewModel.insertUserInformation(
+            UserInformationModel(
                 binding.etUserName.text.toString(),
                 binding.etUserEmail.text.toString(),
                 binding.etUserAddress.text.toString(),
