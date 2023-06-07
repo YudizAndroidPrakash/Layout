@@ -1,88 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_doremon"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".viewmodlelivedataflow.AddUserInformationFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditText
-        android:id="@+id/tv_user_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Your Name"
-        android:textAlignment="center"
-        android:padding="15dp"
-        android:layout_margin="15dp"
-        android:background="@drawable/shape_is_selected"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <EditText
-        android:id="@+id/tv_user_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Your Email"
-        android:padding="15dp"
-        android:layout_margin="10dp"
-        android:textAlignment="center"
-        android:background="@drawable/shape_is_selected"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-    <EditText
-        android:id="@+id/tv_user_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="15dp"
-        android:hint="Your Address"
-        android:textAlignment="center"
-        android:background="@drawable/shape_is_selected"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_email"
-        />
+    <data>
 
-    <EditText
-        android:id="@+id/tv_user_mobile_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="15dp"
-        android:hint="Your MobileNumber"
-        android:textAlignment="center"
-        android:background="@drawable/shape_is_selected"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_address"
-        />
+    </data>
 
-    <EditText
-        android:id="@+id/tv_user_news_topic"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        tools:context=".viewmodlelivedataflow.AddUserInformationFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="15dp"
-        android:hint="Your News Topic"
-        android:textAlignment="center"
-        android:background="@drawable/shape_is_selected"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_mobile_number"
-        />
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_save_user_information"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:layout_margin="15dp"
-        android:background="@drawable/shape_is_selected"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_user_news_topic"
-        />
+        android:layout_height="match_parent"
+        android:background="@color/bg_doremon">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/et_user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Your Name"
+            android:textAlignment="center"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/shape_is_selected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_user_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Your Email"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:background="@drawable/shape_is_selected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_user_name"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/et_user_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:hint="Your Address"
+            android:textAlignment="center"
+            android:background="@drawable/shape_is_selected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_user_email" />
+
+        <EditText
+            android:id="@+id/et_user_mobile_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:hint="Your MobileNumber"
+            android:textAlignment="center"
+            android:background="@drawable/shape_is_selected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_user_address" />
+
+        <EditText
+            android:id="@+id/et_user_news_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:padding="15dp"
+            android:hint="Your News Topic"
+            android:textAlignment="center"
+            android:background="@drawable/shape_is_selected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_user_mobile_number" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save_user_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:layout_margin="15dp"
+            android:background="@drawable/shape_is_selected"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_user_news_topic" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
