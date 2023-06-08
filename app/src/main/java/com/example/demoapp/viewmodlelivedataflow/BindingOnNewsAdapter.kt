@@ -6,6 +6,6 @@ import com.example.demoapp.R
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("newsImage")
-fun newsImageThumbnail(imageView: ImageView,imageUrl :String){
-    Picasso.get().load(imageUrl).into(imageView)
+fun ImageView.newsImageThumbnail(imageUrl :String){
+    Picasso.get().load(imageUrl).into(this)
 }

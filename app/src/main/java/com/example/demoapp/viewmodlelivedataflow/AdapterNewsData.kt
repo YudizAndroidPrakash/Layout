@@ -13,7 +13,7 @@ import com.example.demoapp.viewmodlelivedataflow.model.Article
 import com.squareup.picasso.Picasso
 import retrofit2.http.Url
 
-class AdapterNewsData(val context: Context,val newsList : ArrayList<Article>) : RecyclerView.Adapter<AdapterNewsData.ViewHolder>() {
+class AdapterNewsData(val context: Context,val newsList : List<Article>) : RecyclerView.Adapter<AdapterNewsData.ViewHolder>() {
 
 
 //    lateinit var binding : NewsItemAdapaterBinding
@@ -31,6 +31,7 @@ class AdapterNewsData(val context: Context,val newsList : ArrayList<Article>) : 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        holder.view.tvNewsName.text = newsList[position].source.name
            holder.view.newsData = newsList[position]
+            holder.view.imageUrl = newsList[position].urlToImage
 
     }
 

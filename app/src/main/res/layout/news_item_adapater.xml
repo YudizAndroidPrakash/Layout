@@ -7,6 +7,9 @@
         <variable
             name="newsData"
             type="com.example.demoapp.viewmodlelivedataflow.model.Article" />
+        <variable
+            name="imageUrl"
+            type="String" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -25,7 +28,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/imgavatar"
-                app:newsImage="@{newsData.urlToImage}"
+
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
