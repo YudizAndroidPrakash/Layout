@@ -28,13 +28,13 @@ class MainViewModel(private val repository: NewsArticleRepository ) : ViewModel(
 //        }
 //    val article : LiveData<NewsDataModel>
 //        get() = repository.newsArticle
-    val article : MutableSharedFlow<List<Article>>
-        get() = repository.newsArticle
-    fun newsDetails(name : String){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getArticle(name)
-        }
-    }
+//    val article : MutableSharedFlow<List<Article>>
+//        get() = repository.newsArticle
+//    fun newsDetails(name : String){
+//        viewModelScope.launch(Dispatchers.IO) {
+//            repository.getArticle(name)
+//        }
+//    }
 //
 //    val article : LiveData<NewsDataModel>
 //    get() = repository.newsArticle

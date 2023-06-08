@@ -7,8 +7,8 @@ plugins {
     //plugin for the map
     // ...
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
-
-    //fcm
+//    id "com.google.devtools.ksp" version "1.8.21-1.0.11"
+//    //fcm
 
 
 //    // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
@@ -69,7 +69,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
-    implementation 'androidx.databinding:databinding-runtime:7.1.2'
+    implementation 'androidx.databinding:databinding-runtime:8.0.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -125,7 +125,6 @@ dependencies {
 
 //View Model Live Data
     def lifecycle_version = "2.6.1"
-    def arch_version = "2.2.0"
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -140,10 +139,12 @@ dependencies {
     // Koin for Android
     implementation "io.insert-koin:koin-android:3.4.2"
     implementation "io.insert-koin:koin-core:3.4.2"
-    implementation "io.insert-koin:koin-viewmodel:3.4.2"
+//    implementation "io.insert-koin:koin-androidx-viewmodel:3.4.2"
 
 
 
+//    implementation "io.insert-koin:koin-annotations:1.2.2"
+//    ksp "io.insert-koin:koin-ksp-compiler:1.2.2"
 //    implementation "io.insert-koin:koin-ksp-compiler:3.4.2"
 
 //    implementation "io.insert-koin:koin-androidx-scope:3.4.2"

@@ -22,9 +22,11 @@ import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModel
 import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModelFactory
 import com.example.demoapp.viewmodlelivedataflow.repository.NewsArticleRepository
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 class AddUserInformationFragment : Fragment() {
-    private lateinit var    mainViewModel: MainViewModel
+//    private lateinit var    mainViewModel: MainViewModel
+    private  val mainViewModel: MainViewModel by inject()
 
 //    private val shareViewModel by lazy {
 //        ViewModelProvider(
@@ -56,11 +58,11 @@ class AddUserInformationFragment : Fragment() {
             container,
             false
         )
-        val newsService = NewsHelper.getInstance().create(NewsServiceProvider::class.java)
-        val repository = NewsArticleRepository(newsService)
-        mainViewModel = ViewModelProvider(requireActivity(),
-            MainViewModelFactory(repository)
-        )[MainViewModel::class.java]
+//        val newsService = NewsHelper.getInstance().create(NewsServiceProvider::class.java)
+//        val repository = NewsArticleRepository(newsService)
+//        mainViewModel = ViewModelProvider(requireActivity(),
+//            MainViewModelFactory(repository)
+//        )[MainViewModel::class.java]
 
 
             mainViewModel.userData.observe(requireActivity()) {

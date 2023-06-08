@@ -18,6 +18,7 @@ import com.example.demoapp.viewmodlelivedataflow.api.NewsServiceProvider
 import com.example.demoapp.viewmodlelivedataflow.model.Article
 import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModel
 import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModelFactory
+import com.example.demoapp.viewmodlelivedataflow.newviewmodel.NewsViewModel
 import com.example.demoapp.viewmodlelivedataflow.repository.NewsArticleRepository
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -26,8 +27,10 @@ import org.koin.android.ext.android.inject
 class UserInformationFragment : Fragment() {
 
     private val car : Car by inject()
+    private  val mainViewModel: MainViewModel by inject()
+    private val newsViewModel : NewsViewModel by inject()
     private lateinit var binding: FragmentUserInformationBinding
-    private lateinit var mainViewModel: MainViewModel
+
     private lateinit var articaleDetails: ArrayList<Article>
     private lateinit var adapter: AdapterNewsData
 
@@ -55,14 +58,14 @@ class UserInformationFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_user_information, container, false)
 
 
-        val newsService = NewsHelper.getInstance().create(NewsServiceProvider::class.java)
-
-        val repository = NewsArticleRepository(newsService)
-
-        mainViewModel = ViewModelProvider(
-            requireActivity(),
-            MainViewModelFactory(repository)
-        )[MainViewModel::class.java]
+//        val newsService = NewsHelper.getInstance().create(NewsServiceProvider::class.java)
+//
+//        val repository = NewsArticleRepository(newsService)
+//
+//        mainViewModel = ViewModelProvider(
+//            requireActivity(),
+//            MainViewModelFactory(repository)
+//        )[MainViewModel::class.java]
 
 
 
@@ -73,7 +76,7 @@ class UserInformationFragment : Fragment() {
             binding.tvUserAddress.text = it.userAddress
             binding.tvUserMobileNumber.text = it.userMobile
             binding.tvUserNewsTopic.text = it.topic
-            mainViewModel.newsDetails(binding.tvUserNewsTopic.text.toString())
+            newsViewModel.newsDetails("modi")
         }
 //        mainViewModel.article.observe(requireActivity()) {
 //            Log.e("news", it.articles.toString())
@@ -94,7 +97,7 @@ class UserInformationFragment : Fragment() {
 //        }
 
         lifecycleScope.launch {
-            mainViewModel.article.collect{
+            newsViewModel.article.collect{
                 adapter = AdapterNewsData(requireContext(), it)
                 binding.rvNewsInformation.adapter = adapter
             }
