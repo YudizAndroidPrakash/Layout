@@ -20,9 +20,12 @@ import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModel
 import com.example.demoapp.viewmodlelivedataflow.newviewmodel.MainViewModelFactory
 import com.example.demoapp.viewmodlelivedataflow.repository.NewsArticleRepository
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 
 
 class UserInformationFragment : Fragment() {
+
+    private val car : Car by inject()
     private lateinit var binding: FragmentUserInformationBinding
     private lateinit var mainViewModel: MainViewModel
     private lateinit var articaleDetails: ArrayList<Article>
@@ -44,6 +47,8 @@ class UserInformationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
         // Inflate the layout for this fragment
         // return inflater.inflate(R.layout.fragment_user_information, container, false)
         binding =
@@ -51,7 +56,9 @@ class UserInformationFragment : Fragment() {
 
 
         val newsService = NewsHelper.getInstance().create(NewsServiceProvider::class.java)
+
         val repository = NewsArticleRepository(newsService)
+
         mainViewModel = ViewModelProvider(
             requireActivity(),
             MainViewModelFactory(repository)
@@ -96,6 +103,7 @@ class UserInformationFragment : Fragment() {
 
 
         binding.btnEditUserInformation.setOnClickListener {
+            car.car()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view, AddUserInformationFragment())
                 .addToBackStack(null)
