@@ -7,7 +7,8 @@ plugins {
     //plugin for the map
     // ...
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin' version '2.0.1' apply false
-//    id "com.google.devtools.ksp" version "1.8.21-1.0.11"
+
+
 //    //fcm
 
 
@@ -140,7 +141,6 @@ dependencies {
     implementation "io.insert-koin:koin-android:3.4.2"
     implementation "io.insert-koin:koin-core:3.4.2"
 //    implementation "io.insert-koin:koin-androidx-viewmodel:3.4.2"
-
 
 
 //    implementation "io.insert-koin:koin-annotations:1.2.2"

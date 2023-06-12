@@ -1,6 +1,8 @@
 package com.example.demoapp.viewmodlelivedataflow.module
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
+import com.example.demoapp.koindemo.SharedPreferenceUtil
 import com.example.demoapp.viewmodlelivedataflow.Car
 import com.example.demoapp.viewmodlelivedataflow.Engine
 import com.example.demoapp.viewmodlelivedataflow.Wheel
@@ -76,6 +78,12 @@ object NewsModule {
             NewsViewModel(get())
         }
 
+    }
+
+    val sharedModule = module {
+        single {
+            SharedPreferenceUtil(get())
+        }
     }
 }
 

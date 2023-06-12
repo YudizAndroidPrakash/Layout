@@ -3,6 +3,7 @@ package com.example.demoapp.jsondemo
 
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -23,10 +24,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ProductDetailActivity : AppCompatActivity() {
         private lateinit var binding: ActivityProductDetailBinding
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Binding
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_product_detail)
+        binding = DataBindingUtil.setContentView<ActivityProductDetailBinding?>(this,R.layout.activity_product_detail).apply {
+
+        }
 
 
 

@@ -1,6 +1,7 @@
 package com.example.demoapp.viewmodlelivedataflow
 
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.demoapp.R
 import com.example.demoapp.databinding.FragmentUserInformationBinding
+import com.example.demoapp.koindemo.SharedPreferenceUtil
 import com.example.demoapp.viewmodlelivedataflow.api.NewsHelper
 import com.example.demoapp.viewmodlelivedataflow.api.NewsServiceProvider
 import com.example.demoapp.viewmodlelivedataflow.model.Article
@@ -27,11 +29,12 @@ import org.koin.android.ext.android.inject
 class UserInformationFragment : Fragment() {
 
     private val car : Car by inject()
+    private val sp : SharedPreferenceUtil by inject()
     private  val mainViewModel: MainViewModel by inject()
     private val newsViewModel : NewsViewModel by inject()
     private lateinit var binding: FragmentUserInformationBinding
-
-    private lateinit var articaleDetails: ArrayList<Article>
+//
+//    private lateinit var articaleDetails: ArrayList<Article>
     private lateinit var adapter: AdapterNewsData
 
 //    private val svm by lazy {
@@ -51,7 +54,6 @@ class UserInformationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
         // Inflate the layout for this fragment
         // return inflater.inflate(R.layout.fragment_user_information, container, false)
         binding =
@@ -67,7 +69,9 @@ class UserInformationFragment : Fragment() {
 //            MainViewModelFactory(repository)
 //        )[MainViewModel::class.java]
 
-
+        sp.setName("ABC")
+        sp.setNumber(1)
+        sp.saveData()
 
 
         mainViewModel.userData.observe(requireActivity()) {
@@ -78,6 +82,17 @@ class UserInformationFragment : Fragment() {
             binding.tvUserNewsTopic.text = it.topic
             newsViewModel.newsDetails("modi")
         }
+
+        lifecycleScope.launch {
+            newsViewModel.article.collect{
+                Log.e("news", it.toString())
+                adapter = AdapterNewsData(requireContext(), it)
+                binding.rvNewsInformation.adapter = adapter
+
+            }
+        }
+
+
 //        mainViewModel.article.observe(requireActivity()) {
 //            Log.e("news", it.articles.toString())
 //
@@ -107,6 +122,8 @@ class UserInformationFragment : Fragment() {
 
         binding.btnEditUserInformation.setOnClickListener {
             car.car()
+            Log.e("Name" ,sp.getName())
+            Log.e("Number",sp.getNumber().toString())
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view, AddUserInformationFragment())
                 .addToBackStack(null)
